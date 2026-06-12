@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Good, The Bad & The Ugly — Noelle Harrelson</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ocean-deep: #152f3a;
+    --ocean-mid: #1E5F74;
+    --ocean-light: #2E8BA0;
+    --seafoam: #9DCBD8;
+    --gold: #D4A85A;
+    --orange: #E8601C;
+    --white: #ffffff;
+    --off-white: #f7f4f0;
+    --text-dark: #1a2a31;
+    --text-mid: #4a6572;
+    --green: #2a7a4b;
+    --red: #c0392b;
+  }
+
+  body { font-family: 'Jost', sans-serif; background: var(--off-white); color: var(--text-dark); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #152f3a 0%, #1E5F74 42%, #2E8BA0 78%, #1a5568 100%);
+    min-height: 320px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .gold-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--gold); }
+  .hero-circle { position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(157,203,216,0.12); }
+  .hero-circle-sm { position: absolute; top: 40px; right: 100px; width: 110px; height: 110px; border-radius: 50%; background: rgba(157,203,216,0.07); }
+  .hero-content { padding: 48px 48px 0; position: relative; z-index: 2; }
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--seafoam); margin-bottom: 12px; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 600; color: var(--white); line-height: 1.0; }
+  .orange-rule { width: 48px; height: 3px; background: var(--orange); margin: 16px 0; }
+  .hero-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.72); max-width: 480px; line-height: 1.7; margin-bottom: 40px; }
+  .wave-wrap { position: relative; height: 80px; }
+  .wave-wrap svg { position: absolute; bottom: 0; left: 0; width: 100%; }
+
+  /* INPUT SECTION */
+  .input-section {
+    background: var(--white);
+    margin: 0 40px;
+    border-radius: 0 0 16px 16px;
+    padding: 36px 40px;
+    box-shadow: 0 4px 32px rgba(21,47,58,0.10);
+  }
+  .input-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--ocean-deep); font-weight: 600; margin-bottom: 6px; }
+  .input-sub { font-size: 13px; color: var(--text-mid); margin-bottom: 28px; line-height: 1.6; }
+
+  .input-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+
+  .input-group { display: flex; flex-direction: column; gap: 6px; }
+  .input-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mid); }
+  .input-hint { font-size: 11px; color: var(--seafoam); margin-top: -2px; }
+
+  input[type="number"], input[type="text"], select {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(21,47,58,0.15);
+    border-radius: 8px;
+    color: var(--text-dark);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  input:focus, select:focus { border-color: var(--ocean-mid); background: var(--white); }
+
+  .run-btn {
+    background: linear-gradient(135deg, #1E5F74, #2E8BA0);
+    color: var(--white);
+    border: none;
+    padding: 16px 40px;
+    border-radius: 8px;
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    display: block;
+    width: 100%;
+  }
+  .run-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* RESULTS */
+  #results { display: none; }
+
+  .results-header { padding: 48px 40px 16px; }
+  .results-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--ocean-deep); font-weight: 600; margin-bottom: 6px; }
+  .results-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* VERDICT CARDS */
+  .verdict-stack { padding: 0 40px; display: flex; flex-direction: column; gap: 20px; }
+  .verdict-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(21,47,58,0.08); }
+
+  .verdict-header { padding: 20px 28px; display: flex; align-items: center; gap: 20px; }
+  .verdict-header.good { background: linear-gradient(135deg, #1a4a2e, #2a7a4b); }
+  .verdict-header.bad { background: linear-gradient(135deg, #7a4a1a, #c07820); }
+  .verdict-header.ugly { background: linear-gradient(135deg, #4a1a1a, var(--red)); }
+
+  .verdict-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 12px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+  .verdict-badge.good { background: rgba(255,255,255,0.18); color: #a8f0c0; }
+  .verdict-badge.bad { background: rgba(255,255,255,0.18); color: #ffd9a0; }
+  .verdict-badge.ugly { background: rgba(255,255,255,0.18); color: #ffb0b0; }
+
+  .verdict-headline { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--white); }
+  .verdict-tagline { font-size: 12px; color: rgba(255,255,255,0.58); margin-top: 3px; }
+
+  .verdict-body { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; }
+  .verdict-numbers { padding: 22px 28px; border-right: 1px solid rgba(21,47,58,0.07); }
+  .verdict-takeaway { padding: 22px 28px; }
+
+  .numbers-title { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 12px; }
+  .income-line { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid rgba(21,47,58,0.06); }
+  .income-line:last-child { border-bottom: none; }
+  .income-label { font-size: 12px; color: var(--text-mid); }
+  .income-value { font-size: 13px; font-weight: 500; }
+  .income-value.pos { color: var(--green); font-weight: 600; }
+  .income-value.neg { color: var(--red); }
+  .income-value.neutral { color: var(--ocean-mid); font-weight: 600; }
+
+  .net-pill { margin-top: 12px; padding: 12px 16px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+  .net-pill.good { background: rgba(42,122,75,0.1); }
+  .net-pill.bad { background: rgba(192,57,43,0.08); }
+  .net-pill.ugly { background: rgba(192,57,43,0.08); }
+  .net-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); max-width: 140px; line-height: 1.4; }
+  .net-value { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; }
+  .net-value.good { color: var(--green); }
+  .net-value.bad { color: var(--red); }
+
+  .takeaway-title { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 10px; }
+  .takeaway-text { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+  .takeaway-text strong { color: var(--text-dark); font-weight: 600; }
+
+  /* CTA */
+  .cta-band {
+    background: linear-gradient(135deg, #152f3a 0%, #1E5F74 55%, #2E8BA0 100%);
+    margin: 40px 40px 0;
+    border-radius: 12px;
+    padding: 40px 44px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cta-band::before { content: ''; position: absolute; top: -50px; right: -50px; width: 220px; height: 220px; border-radius: 50%; background: rgba(157,203,216,0.1); }
+  .cta-band::after { content: ''; position: absolute; bottom: -30px; left: 20%; width: 160px; height: 160px; border-radius: 50%; background: rgba(212,168,90,0.08); }
+  .cta-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; position: relative; z-index: 1; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 10px; position: relative; z-index: 1; }
+  .cta-rule { width: 48px; height: 3px; background: var(--orange); margin: 14px auto; position: relative; z-index: 1; }
+  .cta-body { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 480px; margin: 0 auto 28px; position: relative; z-index: 1; }
+  .cta-body strong { color: var(--white); }
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 14px; position: relative; z-index: 1; }
+
+  /* FOOTER */
+  .footer { background: var(--ocean-deep); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--white); font-weight: 600; }
+  .footer-details { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; line-height: 1.7; }
+  .footer-badge { background: var(--orange); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; }
+  .footer-right { text-align: right; }
+  .footer-phone { font-size: 14px; color: var(--seafoam); font-weight: 500; }
+  .footer-disclaimer { font-size: 10px; color: rgba(255,255,255,0.28); margin-top: 4px; line-height: 1.5; }
+
+  @media (max-width: 720px) {
+    .hero-content { padding: 36px 20px 0; }
+    .hero-title { font-size: 38px; }
+    .input-section { margin: 0 16px; padding: 24px 20px; }
+    .input-grid { grid-template-columns: 1fr; }
+    .results-header { padding: 36px 20px 12px; }
+    .verdict-stack { padding: 0 16px; }
+    .verdict-body { grid-template-columns: 1fr; }
+    .verdict-numbers { border-right: none; border-bottom: 1px solid rgba(21,47,58,0.07); }
+    .cta-band { margin: 32px 16px 0; padding: 32px 24px; }
+    .cta-title { font-size: 28px; }
+    .footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    .footer-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="gold-bar"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle-sm"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Free Tool · Coastal Ventura County</div>
+    <div class="hero-title">The Good.<br>The Bad.<br>The Ugly.</div>
+    <div class="orange-rule"></div>
+    <div class="hero-sub">Thinking about renting out your home and moving somewhere new? Enter your home's value and see the real numbers — no fluff, no sales pitch.</div>
+  </div>
+  <div class="wave-wrap">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="rgba(0,0,0,0.18)"/>
+    </svg>
+  </div>
+</div>
+
+<!-- INPUT -->
+<div class="input-section">
+  <div class="input-title">Tell me about your home.</div>
+  <div class="input-sub">Two numbers is all I need. I'll estimate the rest using real local market data.</div>
+  <div class="input-grid">
+    <div class="input-group">
+      <label class="input-label">Your Home's Value</label>
+      <div class="input-hint">Not sure? Check Zillow or Redfin</div>
+      <input type="number" id="homeValue" placeholder="e.g. 1200000" min="200000" max="10000000" step="10000">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Approx. Mortgage Balance</label>
+      <div class="input-hint">Rough guess is fine — or enter $0 if paid off</div>
+      <input type="number" id="mortgageBalance" placeholder="e.g. 400000" min="0" max="5000000" step="10000">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Where do you want to move?</label>
+      <div class="input-hint">Helps me estimate rental costs</div>
+      <select id="targetArea">
+        <option value="silverstrand">Silver Strand Beach</option>
+        <option value="hollywood">Hollywood Beach / Oxnard Shores</option>
+        <option value="carpinteria">Carpinteria</option>
+        <option value="santabarbara">Santa Barbara</option>
+        <option value="ventura">Ventura / Downtown</option>
+      </select>
+    </div>
+  </div>
+  <button class="run-btn" onclick="runAnalysis()">Show Me The Numbers →</button>
+</div>
+
+<!-- RESULTS -->
+<div id="results">
+  <div class="results-header">
+    <div class="results-title">Here's your honest breakdown.</div>
+    <div class="results-sub" id="results-sub">Based on your inputs and current Ventura County market data.</div>
+  </div>
+
+  <div class="verdict-stack">
+
+    <!-- GOOD -->
+    <div class="verdict-card">
+      <div class="verdict-header good">
+        <div class="verdict-badge good">✦ The Good</div>
+        <div>
+          <div class="verdict-headline">Short-Term Rental — Best Case</div>
+          <div class="verdict-tagline">Maximum income, optimized and managed well</div>
+        </div>
+      </div>
+      <div class="verdict-body">
+        <div class="verdict-numbers">
+          <div class="numbers-title">Monthly Math</div>
+          <div class="income-line"><span class="income-label">STR gross revenue (avg/mo)</span><span class="income-value neutral" id="str-gross">—</span></div>
+          <div class="income-line"><span class="income-label">STR management + cleaning (~28%)</span><span class="income-value neg" id="str-mgmt">—</span></div>
+          <div class="income-line"><span class="income-label">Est. mortgage payment</span><span class="income-value neg" id="str-mortgage">—</span></div>
+          <div class="income-line"><span class="income-label">Insurance + taxes + misc</span><span class="income-value neg" id="str-misc">—</span></div>
+          <div class="income-line"><span class="income-label">Your home nets</span><span class="income-value pos" id="str-net-home">—</span></div>
+          <div class="income-line"><span class="income-label">Your new rental cost</span><span class="income-value neg" id="str-rent">—</span></div>
+          <div class="net-pill good">
+            <span class="net-label">Monthly out of pocket</span>
+            <span class="net-value good" id="str-final">—</span>
+          </div>
+        </div>
+        <div class="verdict-takeaway">
+          <div class="takeaway-title">The Real Talk</div>
+          <div class="takeaway-text" id="good-text">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAD -->
+    <div class="verdict-card">
+      <div class="verdict-header bad">
+        <div class="verdict-badge bad">▲ The Bad</div>
+        <div>
+          <div class="verdict-headline">Long-Term Rental — The "Easy" Path</div>
+          <div class="verdict-tagline">One tenant, one check — but the math tells a different story</div>
+        </div>
+      </div>
+      <div class="verdict-body">
+        <div class="verdict-numbers">
+          <div class="numbers-title">Monthly Math</div>
+          <div class="income-line"><span class="income-label">LTR monthly rent (est.)</span><span class="income-value neutral" id="ltr-gross">—</span></div>
+          <div class="income-line"><span class="income-label">Property management (9%)</span><span class="income-value neg" id="ltr-mgmt">—</span></div>
+          <div class="income-line"><span class="income-label">Est. mortgage payment</span><span class="income-value neg" id="ltr-mortgage">—</span></div>
+          <div class="income-line"><span class="income-label">Insurance + taxes + misc</span><span class="income-value neg" id="ltr-misc">—</span></div>
+          <div class="income-line"><span class="income-label">Your home nets</span><span class="income-value pos" id="ltr-net-home">—</span></div>
+          <div class="income-line"><span class="income-label">Your new rental cost</span><span class="income-value neg" id="ltr-rent">—</span></div>
+          <div class="net-pill bad">
+            <span class="net-label">Monthly out of pocket</span>
+            <span class="net-value bad" id="ltr-final">—</span>
+          </div>
+        </div>
+        <div class="verdict-takeaway">
+          <div class="takeaway-title">The Real Talk</div>
+          <div class="takeaway-text" id="bad-text">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UGLY -->
+    <div class="verdict-card">
+      <div class="verdict-header ugly">
+        <div class="verdict-badge ugly">● The Ugly</div>
+        <div>
+          <div class="verdict-headline">What Your Equity Is Actually Worth</div>
+          <div class="verdict-tagline">The number nobody talks about — but should</div>
+        </div>
+      </div>
+      <div class="verdict-body">
+        <div class="verdict-numbers">
+          <div class="numbers-title">The Equity Picture</div>
+          <div class="income-line"><span class="income-label">Your home's value</span><span class="income-value neutral" id="ugly-value">—</span></div>
+          <div class="income-line"><span class="income-label">Est. remaining mortgage</span><span class="income-value neg" id="ugly-mortgage">—</span></div>
+          <div class="income-line"><span class="income-label">Your equity</span><span class="income-value pos" id="ugly-equity">—</span></div>
+          <div class="income-line"><span class="income-label">Best-case STR annual net</span><span class="income-value neutral" id="ugly-str-annual">—</span></div>
+          <div class="income-line"><span class="income-label">Return on your equity</span><span class="income-value neg" id="ugly-roa">—</span></div>
+          <div class="income-line"><span class="income-label">What 5–8% on equity looks like</span><span class="income-value pos" id="ugly-potential">—</span></div>
+          <div class="net-pill ugly">
+            <span class="net-label">Annual opportunity cost</span>
+            <span class="net-value bad" id="ugly-gap">—</span>
+          </div>
+        </div>
+        <div class="verdict-takeaway">
+          <div class="takeaway-title">The Real Talk</div>
+          <div class="takeaway-text" id="ugly-text">—</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="cta-eyebrow">Want The Full Picture?</div>
+    <div class="cta-title">No pressure.<br>Just your real numbers.</div>
+    <div class="cta-rule"></div>
+    <div class="cta-body">These estimates are based on market averages. <strong>Your actual numbers depend on your specific home, your mortgage rate, and your goals.</strong> DM me and I'll run a full analysis — no commitment, no sales pitch. Just data.</div>
+    <a class="cta-btn" href="https://instagram.com/mrs.njharrelson" target="_blank">DM Me on Instagram →</a>
+    <div class="cta-note">Or call / text: (805) 455-2107</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>
+    <div class="footer-name">Noelle Harrelson <span class="footer-badge">REALTOR®</span></div>
+    <div class="footer-details">
+      DRE #02239099 · NextHome Preferred Properties · Broker DRE #01280302<br>
+      (805) 455-2107 · noelleharrelson.nhpp.re · Each office is independently owned and operated.
+    </div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-phone">(805) 455-2107</div>
+    <div class="footer-disclaimer">
+      Estimates based on Ventura County market data. For illustrative purposes only.<br>
+      Not legal or financial advice. Results vary based on individual circumstances.
+    </div>
+  </div>
+</div>
+
+<script>
+  // Rental cost by target area (mid-range 3bd)
+  const rentalCosts = {
+    silverstrand:  { low: 4000, mid: 5000, high: 6500,  label: "Silver Strand Beach" },
+    hollywood:     { low: 3500, mid: 4500, high: 5800,  label: "Hollywood Beach / Oxnard Shores" },
+    carpinteria:   { low: 4500, mid: 5800, high: 7500,  label: "Carpinteria" },
+    santabarbara:  { low: 5500, mid: 7000, high: 9500,  label: "Santa Barbara" },
+    ventura:       { low: 2800, mid: 3600, high: 4800,  label: "Ventura / Downtown" },
+  };
+
+  function fmt(n) {
+    if (n === 0) return "$0";
+    const abs = Math.abs(Math.round(n));
+    const s = abs.toLocaleString();
+    return (n < 0 ? "– $" : "$") + s;
+  }
+
+  function fmtMo(n) {
+    const sign = n < 0 ? "– $" : "+ $";
+    return sign + Math.abs(Math.round(n)).toLocaleString() + "/mo";
+  }
+
+  function mortgagePayment(balance) {
+    // Estimate: assume 4.5% rate, remaining term ~20yrs if large balance
+    const r = 0.045 / 12;
+    const n = 240;
+    if (balance <= 0) return 0;
+    return Math.round(balance * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1));
+  }
+
+  function runAnalysis() {
+    const hv = parseFloat(document.getElementById('homeValue').value) || 0;
+    const mb = parseFloat(document.getElementById('mortgageBalance').value) || 0;
+    const area = document.getElementById('targetArea').value;
+
+    if (hv < 100000) {
+      alert("Please enter a valid home value.");
+      return;
+    }
+
+    const rc = rentalCosts[area];
+    const rentCost = rc.mid;
+
+    // Mortgage
+    const mortgagePmt = mb > 0 ? mortgagePayment(mb) : 0;
+
+    // STR estimate: ~6.8% gross yield annualized (Ventura coastal avg), divide by 12
+    const strGrossAnnual = hv * 0.068;
+    const strGrossMo = strGrossAnnual / 12;
+    const strMgmt = strGrossMo * 0.28;
+    const strMisc = Math.min(900, hv * 0.00045);
+    const strNetHome = strGrossMo - strMgmt - mortgagePmt - strMisc;
+    const strFinal = strNetHome - rentCost;
+
+    // LTR estimate: ~0.35% of value per month (Ventura coastal)
+    const ltrGross = hv * 0.0035;
+    const ltrMgmt = ltrGross * 0.09;
+    const ltrMisc = Math.min(700, hv * 0.00038);
+    const ltrNetHome = ltrGross - ltrMgmt - mortgagePmt - ltrMisc;
+    const ltrFinal = ltrNetHome - rentCost;
+
+    // Equity
+    const equity = hv - mb;
+    const strAnnualNet = strNetHome * 12;
+    const roa = equity > 0 ? ((strAnnualNet / equity) * 100) : 0;
+    const potentialLow = equity * 0.05;
+    const potentialHigh = equity * 0.08;
+    const gap = ((potentialLow + potentialHigh) / 2) - strAnnualNet;
+
+    // Populate STR
+    document.getElementById('str-gross').textContent = fmt(strGrossMo) + "/mo";
+    document.getElementById('str-mgmt').textContent = "– $" + Math.round(strMgmt).toLocaleString();
+    document.getElementById('str-mortgage').textContent = mortgagePmt > 0 ? "– $" + mortgagePmt.toLocaleString() : "$0";
+    document.getElementById('str-misc').textContent = "– $" + Math.round(strMisc).toLocaleString();
+    document.getElementById('str-net-home').textContent = fmtMo(strNetHome);
+    document.getElementById('str-rent').textContent = "– $" + rentCost.toLocaleString();
+    const strFinalEl = document.getElementById('str-final');
+    strFinalEl.textContent = strFinal >= 0 ? "+ $" + Math.round(strFinal).toLocaleString() + "/mo" : "– $" + Math.round(Math.abs(strFinal)).toLocaleString() + "/mo";
+    strFinalEl.className = "net-value " + (strFinal >= -500 ? "good" : "bad");
+
+    // Populate LTR
+    document.getElementById('ltr-gross').textContent = fmt(ltrGross) + "/mo";
+    document.getElementById('ltr-mgmt').textContent = "– $" + Math.round(ltrMgmt).toLocaleString();
+    document.getElementById('ltr-mortgage').textContent = mortgagePmt > 0 ? "– $" + mortgagePmt.toLocaleString() : "$0";
+    document.getElementById('ltr-misc').textContent = "– $" + Math.round(ltrMisc).toLocaleString();
+    document.getElementById('ltr-net-home').textContent = fmtMo(ltrNetHome);
+    document.getElementById('ltr-rent').textContent = "– $" + rentCost.toLocaleString();
+    document.getElementById('ltr-final').textContent = "– $" + Math.round(Math.abs(ltrFinal)).toLocaleString() + "/mo";
+
+    // Populate Ugly
+    document.getElementById('ugly-value').textContent = fmt(hv);
+    document.getElementById('ugly-mortgage').textContent = mb > 0 ? "– $" + mb.toLocaleString() : "$0";
+    document.getElementById('ugly-equity').textContent = "~ $" + Math.round(equity).toLocaleString();
+    document.getElementById('ugly-str-annual').textContent = "~ $" + Math.round(strAnnualNet).toLocaleString() + "/yr";
+    document.getElementById('ugly-roa').textContent = roa.toFixed(1) + "% return on equity";
+    document.getElementById('ugly-potential').textContent = "$" + Math.round(potentialLow/1000) + "K – $" + Math.round(potentialHigh/1000) + "K/yr";
+    document.getElementById('ugly-gap').textContent = "~ $" + Math.round(gap/1000) + "K/yr";
+
+    // Dynamic text
+    const areaLabel = rc.label;
+    const goodVerdict = strFinal >= 0
+      ? `This is the scenario where <strong>your home basically pays for your move</strong>. Short-term rental income covers your costs and your new rent in ${areaLabel} — you're living where you want to be for nearly nothing out of pocket. It requires good management and some seasonality tolerance, but the math works.`
+      : `This is the best-case scenario, and you're still out <strong>$${Math.round(Math.abs(strFinal)).toLocaleString()}/mo</strong> — which isn't terrible depending on your lifestyle goals. STR in this price range can be optimized further with the right management company and peak-season pricing.`;
+
+    const badVerdict = `Long-term rental feels safe — one tenant, one check, no hassle. But you're looking at <strong>$${Math.round(Math.abs(ltrFinal)).toLocaleString()} out of pocket every single month</strong> to live in ${areaLabel}. That's $${Math.round(Math.abs(ltrFinal)*12/1000)}K a year. It's a lifestyle choice, not a financial one — and there's nothing wrong with that, as long as you go in knowing the real cost.`;
+
+    const uglyVerdict = equity > 800000
+      ? `Here's the part that nobody says out loud: <strong>your equity is your most powerful asset</strong> — and right now it's earning ${roa.toFixed(1)}% as a rental. Repositioned into the right property, that same equity could be working at 5–8%+. That's a $${Math.round(gap/1000)}K/year difference. The "ugly" truth isn't that you're doing anything wrong. It's that <strong>you might be leaving real money on the table</strong> without knowing it.`
+      : `At ${roa.toFixed(1)}% return on equity, your home is working — but not as hard as it could be. If you have goals beyond just covering your costs, it's worth a real conversation about whether this asset is the right vehicle to get you there. <strong>That's exactly what I help people figure out.</strong>`;
+
+    document.getElementById('good-text').innerHTML = goodVerdict;
+    document.getElementById('bad-text').innerHTML = badVerdict;
+    document.getElementById('ugly-text').innerHTML = uglyVerdict;
+    document.getElementById('results-sub').textContent = `Based on a $${Math.round(hv/1000)}K home, $${Math.round(mb/1000)}K mortgage balance, and moving to ${areaLabel}.`;
+
+    // Show results
+    const resultsEl = document.getElementById('results');
+    resultsEl.style.display = 'block';
+    setTimeout(() => resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+</script>
+</body>
+</html>
