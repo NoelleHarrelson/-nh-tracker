@@ -24,7 +24,6 @@
 
   body { font-family: 'Jost', sans-serif; background: var(--off-white); color: var(--text-dark); }
 
-  /* HERO */
   .hero {
     background: linear-gradient(135deg, #152f3a 0%, #1E5F74 42%, #2E8BA0 78%, #1a5568 100%);
     min-height: 320px;
@@ -45,7 +44,6 @@
   .wave-wrap { position: relative; height: 80px; }
   .wave-wrap svg { position: absolute; bottom: 0; left: 0; width: 100%; }
 
-  /* INPUT SECTION */
   .input-section {
     background: var(--white);
     margin: 0 40px;
@@ -77,6 +75,12 @@
   }
   input:focus, select:focus { border-color: var(--ocean-mid); background: var(--white); }
 
+  .select-group { position: relative; }
+  .select-group select { appearance: none; padding-right: 36px; }
+  .select-group::after { content: '▾'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ocean-mid); pointer-events: none; font-size: 14px; }
+
+  optgroup { font-weight: 600; color: var(--ocean-deep); }
+
   .run-btn {
     background: linear-gradient(135deg, #1E5F74, #2E8BA0);
     color: var(--white);
@@ -94,14 +98,12 @@
   }
   .run-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-  /* RESULTS */
   #results { display: none; }
 
   .results-header { padding: 48px 40px 16px; }
   .results-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--ocean-deep); font-weight: 600; margin-bottom: 6px; }
   .results-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
 
-  /* VERDICT CARDS */
   .verdict-stack { padding: 0 40px; display: flex; flex-direction: column; gap: 20px; }
   .verdict-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(21,47,58,0.08); }
 
@@ -144,7 +146,6 @@
   .takeaway-text { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
   .takeaway-text strong { color: var(--text-dark); font-weight: 600; }
 
-  /* CTA */
   .cta-band {
     background: linear-gradient(135deg, #152f3a 0%, #1E5F74 55%, #2E8BA0 100%);
     margin: 40px 40px 0;
@@ -182,7 +183,6 @@
   .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
   .cta-note { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 14px; position: relative; z-index: 1; }
 
-  /* FOOTER */
   .footer { background: var(--ocean-deep); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
   .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--white); font-weight: 600; }
   .footer-details { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; line-height: 1.7; }
@@ -215,7 +215,7 @@
   <div class="hero-circle"></div>
   <div class="hero-circle-sm"></div>
   <div class="hero-content">
-    <div class="eyebrow">Free Tool · Coastal Ventura County</div>
+    <div class="eyebrow">Free Tool · California Coastal Markets</div>
     <div class="hero-title">The Good.<br>The Bad.<br>The Ugly.</div>
     <div class="orange-rule"></div>
     <div class="hero-sub">Thinking about renting out your home and moving somewhere new? Enter your home's value and see the real numbers — no fluff, no sales pitch.</div>
@@ -245,13 +245,28 @@
     <div class="input-group">
       <label class="input-label">Where do you want to move?</label>
       <div class="input-hint">Helps me estimate rental costs</div>
-      <select id="targetArea">
-        <option value="silverstrand">Silver Strand Beach</option>
-        <option value="hollywood">Hollywood Beach / Oxnard Shores</option>
-        <option value="carpinteria">Carpinteria</option>
-        <option value="santabarbara">Santa Barbara</option>
-        <option value="ventura">Ventura / Downtown</option>
-      </select>
+      <div class="select-group">
+        <select id="targetArea">
+          <optgroup label="── Ventura County Coastal ──">
+            <option value="silverstrand">Silver Strand Beach</option>
+            <option value="hollywoodbeach">Hollywood Beach</option>
+            <option value="hollywoodbythesea">Hollywood by the Sea</option>
+            <option value="mandalay">Mandalay Beach</option>
+            <option value="oxnardshores">Oxnard Shores</option>
+            <option value="channelislands">Channel Islands Harbor</option>
+            <option value="porthueneme">Port Hueneme Beach</option>
+            <option value="ventura">Ventura / Downtown</option>
+            <option value="venturakeys">Ventura Keys</option>
+          </optgroup>
+          <optgroup label="── Santa Barbara County ──">
+            <option value="carpinteria">Carpinteria</option>
+            <option value="montecito">Montecito</option>
+            <option value="santabarbara">Santa Barbara</option>
+            <option value="goleta">Goleta / Isla Vista</option>
+            <option value="losolivos">Los Olivos / Santa Ynez Valley</option>
+          </optgroup>
+        </select>
+      </div>
     </div>
   </div>
   <button class="run-btn" onclick="runAnalysis()">Show Me The Numbers →</button>
@@ -261,7 +276,7 @@
 <div id="results">
   <div class="results-header">
     <div class="results-title">Here's your honest breakdown.</div>
-    <div class="results-sub" id="results-sub">Based on your inputs and current Ventura County market data.</div>
+    <div class="results-sub" id="results-sub">Based on your inputs and current market data.</div>
   </div>
 
   <div class="verdict-stack">
@@ -381,20 +396,31 @@
   <div class="footer-right">
     <div class="footer-phone">(805) 455-2107</div>
     <div class="footer-disclaimer">
-      Estimates based on Ventura County market data. For illustrative purposes only.<br>
+      Estimates based on current market data. For illustrative purposes only.<br>
       Not legal or financial advice. Results vary based on individual circumstances.
     </div>
   </div>
 </div>
 
 <script>
-  // Rental cost by target area (mid-range 3bd)
+  // Rental costs by area (mid-range 3bd monthly)
   const rentalCosts = {
-    silverstrand:  { low: 4000, mid: 5000, high: 6500,  label: "Silver Strand Beach" },
-    hollywood:     { low: 3500, mid: 4500, high: 5800,  label: "Hollywood Beach / Oxnard Shores" },
-    carpinteria:   { low: 4500, mid: 5800, high: 7500,  label: "Carpinteria" },
-    santabarbara:  { low: 5500, mid: 7000, high: 9500,  label: "Santa Barbara" },
-    ventura:       { low: 2800, mid: 3600, high: 4800,  label: "Ventura / Downtown" },
+    // Ventura County Coastal
+    silverstrand:     { low: 4000, mid: 5200, high: 6800,  label: "Silver Strand Beach" },
+    hollywoodbeach:   { low: 3800, mid: 4800, high: 6200,  label: "Hollywood Beach" },
+    hollywoodbythesea:{ low: 3600, mid: 4600, high: 6000,  label: "Hollywood by the Sea" },
+    mandalay:         { low: 4200, mid: 5400, high: 7000,  label: "Mandalay Beach" },
+    oxnardshores:     { low: 3400, mid: 4400, high: 5800,  label: "Oxnard Shores" },
+    channelislands:   { low: 3200, mid: 4000, high: 5200,  label: "Channel Islands Harbor" },
+    porthueneme:      { low: 2800, mid: 3600, high: 4600,  label: "Port Hueneme Beach" },
+    ventura:          { low: 2800, mid: 3600, high: 4800,  label: "Ventura / Downtown" },
+    venturakeys:      { low: 3800, mid: 4800, high: 6200,  label: "Ventura Keys" },
+    // Santa Barbara County
+    carpinteria:      { low: 4500, mid: 5800, high: 7500,  label: "Carpinteria" },
+    montecito:        { low: 7000, mid: 9500, high: 14000, label: "Montecito" },
+    santabarbara:     { low: 5500, mid: 7000, high: 9500,  label: "Santa Barbara" },
+    goleta:           { low: 3800, mid: 4800, high: 6200,  label: "Goleta / Isla Vista" },
+    losolivos:        { low: 3200, mid: 4200, high: 5500,  label: "Los Olivos / Santa Ynez Valley" },
   };
 
   function fmt(n) {
@@ -410,7 +436,6 @@
   }
 
   function mortgagePayment(balance) {
-    // Estimate: assume 4.5% rate, remaining term ~20yrs if large balance
     const r = 0.045 / 12;
     const n = 240;
     if (balance <= 0) return 0;
@@ -429,11 +454,8 @@
 
     const rc = rentalCosts[area];
     const rentCost = rc.mid;
-
-    // Mortgage
     const mortgagePmt = mb > 0 ? mortgagePayment(mb) : 0;
 
-    // STR estimate: ~6.8% gross yield annualized (Ventura coastal avg), divide by 12
     const strGrossAnnual = hv * 0.068;
     const strGrossMo = strGrossAnnual / 12;
     const strMgmt = strGrossMo * 0.28;
@@ -441,14 +463,12 @@
     const strNetHome = strGrossMo - strMgmt - mortgagePmt - strMisc;
     const strFinal = strNetHome - rentCost;
 
-    // LTR estimate: ~0.35% of value per month (Ventura coastal)
     const ltrGross = hv * 0.0035;
     const ltrMgmt = ltrGross * 0.09;
     const ltrMisc = Math.min(700, hv * 0.00038);
     const ltrNetHome = ltrGross - ltrMgmt - mortgagePmt - ltrMisc;
     const ltrFinal = ltrNetHome - rentCost;
 
-    // Equity
     const equity = hv - mb;
     const strAnnualNet = strNetHome * 12;
     const roa = equity > 0 ? ((strAnnualNet / equity) * 100) : 0;
@@ -456,7 +476,6 @@
     const potentialHigh = equity * 0.08;
     const gap = ((potentialLow + potentialHigh) / 2) - strAnnualNet;
 
-    // Populate STR
     document.getElementById('str-gross').textContent = fmt(strGrossMo) + "/mo";
     document.getElementById('str-mgmt').textContent = "– $" + Math.round(strMgmt).toLocaleString();
     document.getElementById('str-mortgage').textContent = mortgagePmt > 0 ? "– $" + mortgagePmt.toLocaleString() : "$0";
@@ -467,7 +486,6 @@
     strFinalEl.textContent = strFinal >= 0 ? "+ $" + Math.round(strFinal).toLocaleString() + "/mo" : "– $" + Math.round(Math.abs(strFinal)).toLocaleString() + "/mo";
     strFinalEl.className = "net-value " + (strFinal >= -500 ? "good" : "bad");
 
-    // Populate LTR
     document.getElementById('ltr-gross').textContent = fmt(ltrGross) + "/mo";
     document.getElementById('ltr-mgmt').textContent = "– $" + Math.round(ltrMgmt).toLocaleString();
     document.getElementById('ltr-mortgage').textContent = mortgagePmt > 0 ? "– $" + mortgagePmt.toLocaleString() : "$0";
@@ -476,7 +494,6 @@
     document.getElementById('ltr-rent').textContent = "– $" + rentCost.toLocaleString();
     document.getElementById('ltr-final').textContent = "– $" + Math.round(Math.abs(ltrFinal)).toLocaleString() + "/mo";
 
-    // Populate Ugly
     document.getElementById('ugly-value').textContent = fmt(hv);
     document.getElementById('ugly-mortgage').textContent = mb > 0 ? "– $" + mb.toLocaleString() : "$0";
     document.getElementById('ugly-equity').textContent = "~ $" + Math.round(equity).toLocaleString();
@@ -485,7 +502,6 @@
     document.getElementById('ugly-potential').textContent = "$" + Math.round(potentialLow/1000) + "K – $" + Math.round(potentialHigh/1000) + "K/yr";
     document.getElementById('ugly-gap').textContent = "~ $" + Math.round(gap/1000) + "K/yr";
 
-    // Dynamic text
     const areaLabel = rc.label;
     const goodVerdict = strFinal >= 0
       ? `This is the scenario where <strong>your home basically pays for your move</strong>. Short-term rental income covers your costs and your new rent in ${areaLabel} — you're living where you want to be for nearly nothing out of pocket. It requires good management and some seasonality tolerance, but the math works.`
@@ -502,7 +518,6 @@
     document.getElementById('ugly-text').innerHTML = uglyVerdict;
     document.getElementById('results-sub').textContent = `Based on a $${Math.round(hv/1000)}K home, $${Math.round(mb/1000)}K mortgage balance, and moving to ${areaLabel}.`;
 
-    // Show results
     const resultsEl = document.getElementById('results');
     resultsEl.style.display = 'block';
     setTimeout(() => resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
