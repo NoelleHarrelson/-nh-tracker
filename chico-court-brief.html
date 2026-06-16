@@ -30,7 +30,6 @@
     min-height: 100vh;
   }
 
-  /* ── HEADER ── */
   .header {
     background: linear-gradient(135deg, #152f3a 0%, #1E5F74 42%, #2E8BA0 78%, #1a5568 100%);
     padding: 36px 40px 32px;
@@ -82,26 +81,15 @@
     text-transform: uppercase;
   }
 
-  .pill.coming-soon { background: var(--orange); color: #fff; }
+  .pill.active { background: #16a34a; color: #fff; }
   .pill.no-hoa { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); }
   .pill.str { background: rgba(212,168,90,0.2); color: var(--gold); border: 1px solid rgba(212,168,90,0.3); }
 
-  /* ── ORANGE BAR ── */
-  .orange-bar {
-    background: var(--orange);
-    height: 3px;
-  }
+  .orange-bar { background: var(--orange); height: 3px; }
 
-  /* ── MAIN ── */
-  .main {
-    max-width: 900px;
-    padding: 36px 40px 48px;
-  }
+  .main { max-width: 900px; padding: 36px 40px 48px; }
 
-  /* ── SECTION ── */
-  .section {
-    margin-bottom: 36px;
-  }
+  .section { margin-bottom: 36px; }
 
   .section-label {
     font-size: 0.6rem;
@@ -122,7 +110,6 @@
     background: var(--border);
   }
 
-  /* ── STAT ROW ── */
   .stat-row {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -137,15 +124,8 @@
     padding: 14px 16px;
   }
 
-  .stat-card.highlight {
-    border-color: var(--ocean-bright);
-    background: #f0f9fb;
-  }
-
-  .stat-card.warn {
-    border-color: #e8b4ae;
-    background: #fff5f4;
-  }
+  .stat-card.highlight { border-color: var(--ocean-bright); background: #f0f9fb; }
+  .stat-card.warn { border-color: #e8b4ae; background: #fff5f4; }
 
   .stat-label {
     font-size: 0.58rem;
@@ -166,18 +146,11 @@
     display: block;
   }
 
-  .stat-val.orange { color: var(--orange); }
   .stat-val.warn { color: var(--warn); }
   .stat-val.gold { color: var(--gold); }
 
-  .stat-note {
-    font-size: 0.65rem;
-    color: #999;
-    display: block;
-    margin-top: 3px;
-  }
+  .stat-note { font-size: 0.65rem; color: #999; display: block; margin-top: 3px; }
 
-  /* ── STR TABLE ── */
   .str-table {
     width: 100%;
     border-collapse: collapse;
@@ -217,7 +190,6 @@
   .str-table td.val.green { color: #16a34a; }
   .str-table td.val.warn { color: var(--warn); }
 
-  /* ── CARRY BOX ── */
   .carry-box {
     background: var(--white);
     border: 1px solid var(--border);
@@ -246,8 +218,8 @@
   }
 
   .carry-row:first-of-type { border-top: none; }
-
   .carry-row .carry-label { color: #888; }
+
   .carry-row .carry-val {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
@@ -255,14 +227,9 @@
     color: var(--ink);
   }
 
-  .carry-row.total {
-    background: var(--sand);
-    font-weight: 600;
-  }
-
+  .carry-row.total { background: var(--sand); font-weight: 600; }
   .carry-row.total .carry-label { color: var(--ink); }
 
-  /* ── VERDICT BOX ── */
   .verdict {
     background: linear-gradient(135deg, #152f3a 0%, #1E5F74 100%);
     border-radius: 8px;
@@ -289,7 +256,6 @@
 
   .verdict-text strong { color: var(--gold); font-weight: 600; }
 
-  /* ── COMPS ── */
   .comp-row {
     display: flex;
     justify-content: space-between;
@@ -310,15 +276,9 @@
     color: var(--ocean-deep);
   }
 
-  .comp-specs {
-    font-size: 0.68rem;
-    color: #999;
-    margin-top: 2px;
-  }
+  .comp-specs { font-size: 0.68rem; color: #999; margin-top: 2px; }
 
-  .comp-price {
-    text-align: right;
-  }
+  .comp-price { text-align: right; }
 
   .comp-price-val {
     font-family: 'Cormorant Garamond', serif;
@@ -327,14 +287,8 @@
     color: var(--ocean-mid);
   }
 
-  .comp-ppsf {
-    font-size: 0.65rem;
-    color: #aaa;
-    display: block;
-    margin-top: 1px;
-  }
+  .comp-ppsf { font-size: 0.65rem; color: #aaa; display: block; margin-top: 1px; }
 
-  /* ── SEASONALITY ── */
   .season-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -371,7 +325,6 @@
 
   .season-card.peak .season-val { color: var(--gold); }
 
-  /* ── DISCLAIMER ── */
   .disclaimer {
     font-size: 0.62rem;
     color: #bbb;
@@ -381,7 +334,6 @@
     margin-top: 8px;
   }
 
-  /* ── FOOTER ── */
   .footer {
     background: var(--ocean-deep);
     padding: 16px 40px;
@@ -423,7 +375,7 @@
   <div class="header-address">2301 <span>Chico</span> Court</div>
   <div class="header-sub">Oxnard, CA 93035 · Silver Strand Beach · Silverstrand Beach Subdivision</div>
   <div class="header-pills">
-    <span class="pill coming-soon">● Coming Soon</span>
+    <span class="pill active">● Active — Listed 6/15/2026</span>
     <span class="pill no-hoa">No HOA</span>
     <span class="pill str">STR Eligible</span>
   </div>
@@ -440,7 +392,7 @@
       <div class="stat-card highlight">
         <span class="stat-label">List Price</span>
         <span class="stat-val">$1.399M</span>
-        <span class="stat-note">Coming Soon 6/3/2026</span>
+        <span class="stat-note">Active 6/15/2026 · MLS V1-36805</span>
       </div>
       <div class="stat-card warn">
         <span class="stat-label">RPR RVM</span>
@@ -460,12 +412,34 @@
       <div class="stat-card">
         <span class="stat-label">Lot Size</span>
         <span class="stat-val">1,286</span>
-        <span class="stat-note">sqft · No HOA</span>
+        <span class="stat-note">sqft · Corner lot · No HOA</span>
       </div>
-      <div class="stat-card">
+      <div class="stat-card warn">
         <span class="stat-label">RVM Trend</span>
         <span class="stat-val warn">−10.6%</span>
-        <span class="stat-note">Year over year</span>
+        <span class="stat-note">Year over year · ↓$10,280/mo</span>
+      </div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:12px 16px;display:flex;gap:24px;flex-wrap:wrap;">
+      <div>
+        <span class="stat-label">RVM Confidence</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--gold);">★★★★★ 5-Star</span>
+      </div>
+      <div>
+        <span class="stat-label">RVM Range</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ocean-mid);">$1.14M – $1.39M</span>
+      </div>
+      <div>
+        <span class="stat-label">Price to Est. Value</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--warn);">111%</span>
+      </div>
+      <div>
+        <span class="stat-label">Previously Sold</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ocean-deep);">$828,000 · May 2006</span>
+      </div>
+      <div>
+        <span class="stat-label">Seller Concessions</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#16a34a;">Yes — Consider</span>
       </div>
     </div>
   </div>
@@ -487,23 +461,31 @@
       <tbody>
         <tr>
           <td><strong>AirDNA</strong></td>
-          <td class="val">$75,700</td>
-          <td class="val">$322</td>
+          <td class="val">$70,400</td>
+          <td class="val">$299</td>
           <td class="val green">64%</td>
-          <td class="val">5.4%</td>
-          <td>Medium</td>
+          <td class="val">5.0%</td>
+          <td>Medium · 15 comps</td>
         </tr>
         <tr>
           <td><strong>Rabbu</strong></td>
-          <td class="val">$69,606</td>
+          <td class="val">$71,055</td>
           <td class="val">$444</td>
-          <td class="val warn">27%</td>
-          <td class="val">4.9%</td>
-          <td>Medium</td>
+          <td class="val">—</td>
+          <td class="val">5.1%</td>
+          <td>Medium · 75th pct</td>
+        </tr>
+        <tr>
+          <td><strong>Blended Est.</strong></td>
+          <td class="val green">~$70,700</td>
+          <td class="val">~$370</td>
+          <td class="val green">64%</td>
+          <td class="val">~5.1%</td>
+          <td>—</td>
         </tr>
       </tbody>
     </table>
-    <p style="font-size:0.68rem;color:#aaa;margin-bottom:0;">Note: ADR discrepancy between sources reflects different comp sets. AirDNA's 64% occupancy is the stronger signal — Rabbu's 27% reflects June market conditions only.</p>
+    <p style="font-size:0.68rem;color:#aaa;margin-bottom:0;">AirDNA and Rabbu revenue are tightly aligned at ~$70–71K — a good sign for reliability. ADR spread reflects different comp sets; AirDNA's 64% occupancy is the stronger signal for annual planning.</p>
   </div>
 
   <!-- SEASONALITY -->
@@ -527,7 +509,7 @@
 
   <!-- CARRY ANALYSIS -->
   <div class="section">
-    <div class="section-label">Estimated Annual Carry · 20% Down / 7% / 30yr</div>
+    <div class="section-label">Estimated Carry · DealCheck · 20% Down / 6% / 30yr</div>
     <div class="carry-box">
       <div class="carry-header">Purchase & Financing</div>
       <div class="carry-row">
@@ -535,16 +517,24 @@
         <span class="carry-val">$279,800</span>
       </div>
       <div class="carry-row">
+        <span class="carry-label">Purchase Costs</span>
+        <span class="carry-val">$41,970</span>
+      </div>
+      <div class="carry-row">
+        <span class="carry-label">Total Cash Needed</span>
+        <span class="carry-val">$321,770</span>
+      </div>
+      <div class="carry-row">
         <span class="carry-label">Loan Amount</span>
         <span class="carry-val">$1,119,200</span>
       </div>
       <div class="carry-row">
-        <span class="carry-label">Est. Monthly P&I</span>
-        <span class="carry-val">~$7,449/mo</span>
+        <span class="carry-label">Monthly Cash Flow (DealCheck)</span>
+        <span class="carry-val" style="color:var(--warn);">–$5,599/mo</span>
       </div>
       <div class="carry-row total">
-        <span class="carry-label">Est. Annual Carry (P&I only)</span>
-        <span class="carry-val">~$89,400/yr</span>
+        <span class="carry-label">Cap Rate · COC Return</span>
+        <span class="carry-val" style="color:var(--warn);">1% · –20.9%</span>
       </div>
     </div>
 
@@ -553,22 +543,26 @@
         <tr>
           <th>Scenario</th>
           <th>STR Revenue</th>
-          <th>Annual Carry</th>
-          <th>Net Position</th>
+          <th>Monthly Cash Flow</th>
+          <th>Annual Net Position</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>AirDNA</strong></td>
-          <td class="val">$75,700</td>
-          <td class="val">$89,400</td>
-          <td class="val warn">−$13,700/yr</td>
+          <td class="val">$70,400/yr</td>
+          <td class="val warn">–$5,599/mo</td>
+          <td class="val warn">–$67,188/yr</td>
         </tr>
         <tr>
-          <td><strong>Rabbu</strong></td>
-          <td class="val">$69,606</td>
-          <td class="val">$89,400</td>
-          <td class="val warn">−$19,794/yr</td>
+          <td><strong>Rabbu 75th pct</strong></td>
+          <td class="val">$71,055/yr</td>
+          <td class="val warn">–$5,544/mo</td>
+          <td class="val warn">–$66,528/yr</td>
+        </tr>
+        <tr>
+          <td><strong>Breakeven Price</strong></td>
+          <td class="val green" colspan="3">~$1.2M–$1.25M — where yield crosses 6% and carry gap closes</td>
         </tr>
       </tbody>
     </table>
@@ -597,7 +591,7 @@
         <span class="comp-ppsf">$523/sqft · Redfin est. now $1.25M</span>
       </div>
     </div>
-    <p style="font-size:0.68rem;color:#aaa;margin-top:10px;">Chico Ct is a low-turnover street — only one MLS sale in the last 24 months. Verify with full CRMLS pull for active brief.</p>
+    <p style="font-size:0.68rem;color:#aaa;margin-top:10px;">Chico Ct is a low-turnover street — only one MLS sale in the last 24 months. Low turnover here isn't a red flag — it's a signal. People don't leave.</p>
   </div>
 
   <!-- LOCAL INTELLIGENCE -->
@@ -621,8 +615,8 @@
         </div>
 
         <div style="background:var(--sand);border-radius:5px;padding:14px 16px;border-left:3px solid var(--gold);">
-          <div style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;">📋 Pending Walkthrough</div>
-          <div style="font-size:0.82rem;color:#888;line-height:1.6;font-style:italic;">Interior condition · actual view lines by floor · parking situation · garage depth · neighbor proximity feel · STR setup potential · seller motivation intel. <br>Targeting mid-week open house — update incoming.</div>
+          <div style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;">📋 Walkthrough Intel Pending</div>
+          <div style="font-size:0.82rem;color:#888;line-height:1.6;font-style:italic;">Interior condition · actual view lines by floor · parking situation · garage depth · neighbor proximity feel · STR setup potential · seller motivation intel. Property is tenant-occupied — showing by appointment only, 24-hour notice preferred.</div>
         </div>
 
       </div>
@@ -633,21 +627,21 @@
   <div class="verdict">
     <div class="verdict-label">The Read</div>
     <div class="verdict-text">
-      Priced <strong>11% above a declining RVM</strong> in a market trending down 10.6% year over year — that's the headline. STR yield comes in at <strong>5.4% (AirDNA) to 4.9% (Rabbu)</strong>, below the coastal investor target of 6–8%. Both scenarios carry negative at ask with a conventional 20% down structure.<br><br>
-      This one pencils better at <strong>$1.2M–$1.25M</strong>. At that price point gross yield crosses 6% and the carry gap closes to near breakeven. The 3-story layout, fireplace, balconies, and Silver Strand address give it lifestyle appeal — but the numbers tell a <strong>motivated seller or patient buyer story</strong>, not a slam-dunk investor play at list price. Seller is offering concessions — worth noting.
+      Priced <strong>11% above a declining RVM</strong> in a market trending down 10.6% year over year — that's the headline. STR yield comes in at <strong>~5.0–5.1%</strong> across AirDNA and Rabbu, below the coastal investor target of 6–8%. DealCheck puts monthly cash flow at <strong>–$5,599/mo</strong> at ask with 6% conventional financing.<br><br>
+      This one pencils better at <strong>$1.2M–$1.25M</strong>. At that price point gross yield crosses 6% and the carry gap closes to near breakeven. The corner lot, 3-story layout, parallel-to-beach positioning, and no-HOA Silver Strand address give it real lifestyle appeal — and the seller is offering concessions. This is a <strong>patient buyer or motivated seller story</strong>, not a slam-dunk at list.
     </div>
   </div>
 
   <!-- DISCLAIMER -->
   <div class="disclaimer">
-    Sources: RPR · AirDNA · Rabbu · CRMLS/Flexmls · Public Records. STR revenue figures are estimates based on comparable properties and market conditions — not guaranteed income. Carry analysis assumes 20% down, 7% interest rate, 30-year amortizing loan, P&I only (taxes and insurance not included). All data deemed reliable but not guaranteed. Not financial advice. Noelle Harrelson, REALTOR® | DRE #02239099 | NextHome Preferred Properties | Each office is independently owned and operated.
+    Sources: RPR · AirDNA · Rabbu · DealCheck · CRMLS/Flexmls · Public Records. STR revenue figures are estimates based on comparable properties and market conditions — not guaranteed income. Carry analysis per DealCheck: 20% down, 6% interest rate, 30-year amortizing loan. All data deemed reliable but not guaranteed. Not financial advice. Data updated 6/16/2026. Noelle Harrelson, REALTOR® | DRE #02239099 | NextHome Preferred Properties | Each office is independently owned and operated.
   </div>
 
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-left">Noelle Harrelson · <span>Coastal Market Intelligence</span> · Vol. 002</div>
+  <div class="footer-left">Noelle Harrelson · <span>Coastal Market Intelligence</span> · Vol. 002 · Updated 6/16/2026</div>
   <div class="footer-right">DRE #02239099 · NextHome Preferred Properties · Each office independently owned & operated</div>
 </div>
 
