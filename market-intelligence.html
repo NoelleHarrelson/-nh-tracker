@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silver Strand · Coastal Market Intelligence · Noelle Harrelson</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ocean-deep:  #152f3a;
+  --ocean-mid:   #1E5F74;
+  --ocean:       #2E8BA0;
+  --ocean-light: #9DCBD8;
+  --seafoam:     #9DCBD8;
+  --sand:        #FAF6F1;
+  --warm:        #F5EDE0;
+  --parchment:   #EDE5D8;
+  --orange:      #E8601C;
+  --orange-soft: rgba(232,96,28,0.08);
+  --orange-glow: rgba(232,96,28,0.15);
+  --gold:        #D4A85A;
+  --gold-soft:   rgba(212,168,90,0.12);
+  --ink:         #1C1C1C;
+  --smoke:       #5A5550;
+  --mist:        #9B9490;
+  --rule:        #E0D8CE;
+  --white:       #FFFFFF;
+  --green:       #2E7D52;
+  --red:         #C0392B;
+  --nh-blue:     #0073A6;
+  --gradient-hero: linear-gradient(135deg, #152f3a 0%, #1E5F74 42%, #2E8BA0 78%, #1a5568 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--sand);
+  font-family: 'Jost', sans-serif;
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  background: var(--ocean-deep);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.masthead-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.masthead-brand::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+.masthead-brand em { color: var(--gold); font-style: italic; }
+.masthead-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.masthead-nav a {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+.masthead-nav a:hover { color: #fff; border-bottom-color: var(--orange); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--gradient-hero);
+  padding: 80px 56px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 100% at 85% 50%, rgba(212,168,90,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 60% at 10% 80%, rgba(232,96,28,0.06) 0%, transparent 60%);
+}
+.hero::after {
+  content: 'NH';
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.hero-left { flex: 1; min-width: 300px; }
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.hero-eyebrow span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--orange);
+}
+.hero-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.hero-left h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-left p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  margin-top: 12px;
+}
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 240px;
+}
+.hero-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: 3px solid var(--orange);
+  border-radius: 3px;
+  padding: 14px 20px;
+}
+.hero-card .hc-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 4px;
+}
+.hero-card .hc-val {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.88);
+  font-weight: 400;
+}
+.hero-card.gold { border-left-color: var(--gold); }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--ocean-mid);
+  padding: 10px 56px;
+  display: flex;
+  gap: 0;
+  overflow: hidden;
+}
+.ticker-inner {
+  display: flex;
+  gap: 48px;
+  animation: ticker-scroll 28s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+.ticker-item strong {
+  color: #fff;
+  font-weight: 600;
+}
+.ticker-item .up { color: #5ddb90; }
+.ticker-item .neutral { color: var(--gold); }
+.ticker-sep { color: rgba(255,255,255,0.2); }
+
+/* ── LAYOUT ── */
+.page { max-width: 1100px; margin: 0 auto; padding: 56px 32px 100px; }
+
+/* ── SECTION HEADER ── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ocean-mid);
+  letter-spacing: 0.01em;
+}
+.section-header h2 em { font-style: italic; }
+.section-header .section-tag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-left: auto;
+}
+.section-block { margin-bottom: 60px; }
+
+/* ── MARKET METRICS GRID ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.metric-card {
+  background: var(--gradient-hero);
+  border-radius: 4px;
+  padding: 22px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.metric-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--orange);
+}
+.metric-card.gold-accent::before { background: var(--gold); }
+.metric-card.ocean-accent::before { background: var(--ocean-light); }
+.metric-card .mc-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 8px;
+  display: block;
+}
+.metric-card .mc-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #fff;
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metric-card .mc-sub {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+}
+.metric-card .mc-delta {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.mc-delta.up { background: rgba(93,219,144,0.15); color: #5ddb90; }
+.mc-delta.neutral { background: rgba(212,168,90,0.15); color: var(--gold); }
+
+/* ── NARRATIVE BOX ── */
+.narrative-box {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--ocean-mid);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+}
+.narrative-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ocean-mid);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+.narrative-box p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--smoke);
+}
+
+/* ── COMP CARDS ── */
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.comp-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: box-shadow 0.2s;
+}
+.comp-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.comp-card.sandfront { border-left: 4px solid var(--ocean-mid); }
+.comp-card.internal  { border-left: 4px solid var(--green); }
+.comp-card.scale     { border-left: 4px solid var(--gold); }
+.comp-card-left h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.comp-card-left p {
+  font-size: 0.75rem;
+  color: var(--mist);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.comp-card-right { text-align: right; flex-shrink: 0; }
+.comp-card-right .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ink);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.comp-card-right .ppsf {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.comp-card.sandfront .ppsf { background: rgba(30,95,116,0.1); color: var(--ocean-mid); }
+.comp-card.internal .ppsf { background: rgba(46,125,82,0.1); color: var(--green); }
+.comp-card.scale .ppsf { background: rgba(212,168,90,0.12); color: #9a7230; }
+
+/* ── PRO FORMA ── */
+.proforma {
+  background: var(--gradient-hero);
+  border-radius: 6px;
+  padding: 36px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.proforma::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(212,168,90,0.06) 0%, transparent 70%);
+}
+.proforma h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  position: relative;
+}
+.proforma-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  position: relative;
+}
+.proforma-numbers .pf-item { text-align: center; }
+.proforma-numbers .pf-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 6px;
+  display: block;
+}
+.proforma-numbers .pf-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: #fff;
+  display: block;
+  line-height: 1;
+}
+.proforma-numbers .pf-value.gold { color: var(--gold); }
+.proforma-divider {
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.1);
+  align-self: center;
+}
+.proforma-footnote {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* ── HUB MODULES GRID ── */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.module-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 22px 24px 20px;
+  transition: all 0.25s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--rule);
+  transition: background 0.25s;
+}
+.module-card:hover { border-color: var(--ocean-light); box-shadow: 0 6px 24px rgba(30,95,116,0.1); transform: translateY(-2px); }
+.module-card:hover::before { background: var(--ocean-mid); }
+.module-card.orange::before { background: var(--orange); }
+.module-card.gold::before { background: var(--gold); }
+.module-card.ocean::before { background: var(--ocean-mid); }
+.module-card.green::before { background: var(--green); }
+.module-icon {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  display: block;
+  line-height: 1;
+}
+.module-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+.module-card p {
+  font-size: 0.78rem;
+  color: var(--mist);
+  line-height: 1.55;
+  font-weight: 400;
+}
+.module-tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--warm);
+  color: var(--smoke);
+}
+.module-card.orange .module-tag { background: var(--orange-soft); color: var(--orange); }
+.module-card.gold .module-tag { background: var(--gold-soft); color: #9a7230; }
+.module-card.ocean .module-tag { background: rgba(30,95,116,0.08); color: var(--ocean-mid); }
+.module-card.green .module-tag { background: rgba(46,125,82,0.08); color: var(--green); }
+
+/* ── BRAND INFO GRID ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px 18px;
+}
+.info-card.accent-orange { border-left: 3px solid var(--orange); }
+.info-card.accent-ocean  { border-left: 3px solid var(--ocean-mid); }
+.info-card.accent-gold   { border-left: 3px solid var(--gold); }
+.info-card .ic-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 5px;
+}
+.info-card .ic-val {
+  font-size: 0.9rem;
+  color: var(--ink);
+  font-weight: 500;
+  word-break: break-all;
+}
+.info-card .ic-val a { color: var(--ocean-mid); text-decoration: none; }
+.info-card .ic-val a:hover { text-decoration: underline; }
+
+/* ── COLOR SWATCHES ── */
+.swatch-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 10px 14px;
+  flex: 1;
+  min-width: 160px;
+}
+.swatch-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.swatch-info .sw-name { font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+.swatch-info .sw-hex { font-size: 0.7rem; color: var(--mist); font-family: monospace; letter-spacing: 0.04em; }
+
+/* ── PILLARS ── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.pillar-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 20px 20px;
+  text-align: center;
+}
+.pillar-card .pc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--ocean-light);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar-card h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pillar-card p { font-size: 0.78rem; color: var(--mist); line-height: 1.55; }
+
+/* ── COMPLIANCE ── */
+.compliance-box {
+  background: var(--warm);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--orange);
+  border-radius: 4px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+}
+.compliance-box h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.compliance-box p {
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: var(--smoke);
+}
+.compliance-box ul {
+  list-style: none;
+  margin-top: 10px;
+}
+.compliance-box ul li {
+  font-size: 0.84rem;
+  color: var(--smoke);
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.55;
+}
+.compliance-box ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ── METRICS TABLE ── */
+.metrics-table {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.metrics-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.metrics-table th {
+  background: var(--ocean-deep);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  text-align: left;
+}
+.metrics-table td {
+  padding: 13px 20px;
+  font-size: 0.84rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+}
+.metrics-table tr:last-child td { border-bottom: none; }
+.metrics-table tr:hover td { background: var(--warm); }
+.metrics-table .td-metric { font-weight: 600; color: var(--ink); }
+.metrics-table .td-range { color: var(--ocean-mid); font-weight: 500; font-family: monospace; }
+.metrics-table .td-strand { color: var(--orange); font-weight: 600; }
+.metrics-table .td-note { font-size: 0.76rem; color: var(--mist); font-style: italic; }
+
+/* ── ACTION ITEMS ── */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.action-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 20px 24px;
+}
+.action-card h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ac-badge {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+.ac-badge.urgent { background: rgba(192,57,43,0.1); color: var(--red); }
+.ac-badge.soon { background: var(--orange-soft); color: var(--orange); }
+.ac-badge.ongoing { background: rgba(46,125,82,0.08); color: var(--green); }
+.action-card ul { list-style: none; }
+.action-card ul li {
+  font-size: 0.82rem;
+  color: var(--smoke);
+  padding: 6px 0;
+  padding-left: 16px;
+  position: relative;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.45;
+}
+.action-card ul li:last-child { border-bottom: none; }
+.action-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--ocean-light);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ocean-deep);
+  padding: 36px 56px;
+  text-align: center;
+}
+.footer p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+.footer p strong { color: rgba(255,255,255,0.55); font-weight: 500; }
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .masthead { padding: 0 20px; }
+  .masthead-nav { display: none; }
+  .hero { padding: 56px 24px 48px; }
+  .page { padding: 36px 20px 80px; }
+  .proforma-numbers { gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<nav class="masthead">
+  <div class="masthead-brand">Noelle Harrelson · <em>Coastal Intelligence</em></div>
+  <div class="masthead-nav">
+    <a onclick="scrollToSection('market')">Market Intel</a>
+    <a onclick="scrollToSection('comps')">Comps</a>
+    <a onclick="scrollToSection('tools')">Tools</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><span>Silver Strand · Oxnard, CA · 93035</span></div>
+      <h1>Coastal Market<br><em>Intelligence</em> Hub</h1>
+      <p>The metrics that matter. The local context that makes them meaningful.<br>Live underwriting frameworks from an agent who actually lives here.</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hc-label">REALTOR®</div>
+        <div class="hc-val">Noelle Harrelson · DRE #02239099</div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-label">Brokerage</div>
+        <div class="hc-val">NextHome Preferred Properties</div>
+      </div>
+      <div class="hero-card gold">
+        <div class="hc-label">Primary Market</div>
+        <div class="hc-val">Ventura &amp; Santa Barbara County</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner" id="tickerInner">
+    <span class="ticker-item">93035 Median Sold <strong>$888K</strong> <span class="up">97.1% List-to-Sale</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Median DOM <strong>43 Days</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Supply <strong>4 Months</strong> <span class="neutral">Balanced Market</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">List-to-Sale <strong>97%</strong> Macro Baseline</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">STR Revenue Floor <strong>$75,500/yr</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">STR Optimistic <strong>$107,036/yr</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Strand Active Listings <strong>June 2026</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">GRM Strand Reality <strong>14–17x</strong></span>
+    <span class="ticker-sep">·</span>
+    <!-- duplicate for seamless scroll -->
+    <span class="ticker-item">93035 Median Sold <strong>$888K</strong> <span class="up">97.1% List-to-Sale</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Median DOM <strong>43 Days</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Supply <strong>4 Months</strong> <span class="neutral">Balanced Market</span></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">List-to-Sale <strong>97%</strong> Macro Baseline</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">STR Revenue Floor <strong>$75,500/yr</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">STR Optimistic <strong>$107,036/yr</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">Strand Active Listings <strong>June 2026</strong></span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item">GRM Strand Reality <strong>14–17x</strong></span>
+  </div>
+</div>
+
+<main class="page">
+
+  <!-- ══════════════════════════════════════
+       SECTION 1 · MARKET INTELLIGENCE
+  ══════════════════════════════════════ -->
+  <section class="section-block reveal" id="market">
+    <div class="section-header">
+      <h2>Coastal Market <em>Intelligence</em></h2>
+      <span class="section-tag">93035 · June 2026 · Source: RPR + CRMLS</span>
+    </div>
+
+    <!-- MACRO METRICS -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <span class="mc-label">93035 Median Price</span>
+        <span class="mc-value">$888K</span>
+        <span class="mc-sub">Median Sold Price</span>
+        <span class="mc-delta up">97.1% List-to-Sale</span>
+      </div>
+      <div class="metric-card gold-accent">
+        <span class="mc-label">Market Velocity</span>
+        <span class="mc-value">43</span>
+        <span class="mc-sub">Median Days on Market</span>
+        <span class="mc-delta neutral">Balanced · room to negotiate</span>
+      </div>
+      <div class="metric-card ocean-accent">
+        <span class="mc-label">Inventory Supply</span>
+        <span class="mc-value">4 mo</span>
+        <span class="mc-sub">Months of Supply</span>
+        <span class="mc-delta neutral">Balanced leaning seller</span>
+      </div>
+      <div class="metric-card">
+        <span class="mc-label">List-to-Sale Ratio</span>
+        <span class="mc-value">97%</span>
+        <span class="mc-sub">Macro Baseline Avg.</span>
+        <span class="mc-delta neutral">Side streets: 87–99%</span>
+      </div>
+    </div>
+
+    <!-- SIX METRICS TABLE -->
+    <div class="narrative-box">
+      <h3>Six Metrics Every Coastal Buyer Should Know</h3>
+      <p>Evaluating luxury coastal residential properties requires bypassing broad zip code averages. In the highly localized pockets of Oxnard's beaches, true asset value is dictated by micro-lane dynamics, structural footprint scale, and short-term operational yield capacity. Applying commercial multi-family discipline — GRM compression, seasonal yield modeling, downside protection underwriting — reveals the accurate reality of performance.</p>
+    </div>
+
+    <div class="metrics-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Formula</th>
+            <th>Healthy Range</th>
+            <th>Strand Reality</th>
+            <th>What It Tells You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-metric">Price Per Sq Ft</td>
+            <td class="td-note">List Price ÷ Living Area</td>
+            <td class="td-range">$500 – $900</td>
+            <td class="td-strand">$400 – $1,200</td>
+            <td class="td-note">Ocean Dr pushes $1,093+. Side streets $400–650.</td>
+          </tr>
+          <tr>
+            <td class="td-metric">Gross Rent Multiplier</td>
+            <td class="td-note">Price ÷ Annual Gross Rent</td>
+            <td class="td-range">8 – 15x</td>
+            <td class="td-strand">~20–25× (STR reframes math)</td>
+            <td class="td-note">$1.23M median @$90K/yr STR = ~14x. Better than most of coastal SoCal.</td>
+          </tr>
+          <tr>
+            <td class="td-metric">Days on Market</td>
+            <td class="td-note">Listed Date → Accepted Offer</td>
+            <td class="td-range">&lt; 21 Days (hot)</td>
+            <td class="td-strand">43 Days avg · June 2026</td>
+            <td class="td-note">Under 30 = highly competitive. 60+ = motivated seller territory.</td>
+          </tr>
+          <tr>
+            <td class="td-metric">List-to-Sale Ratio</td>
+            <td class="td-note">Sale Price ÷ List Price × 100</td>
+            <td class="td-range">97% – 103%</td>
+            <td class="td-strand">97.1% avg · slight buyer leverage</td>
+            <td class="td-note">Side streets show excellent negotiation margins. Beach block runs tighter.</td>
+          </tr>
+          <tr>
+            <td class="td-metric">Absorption Rate</td>
+            <td class="td-note">Sold/Mo ÷ Active Listings</td>
+            <td class="td-range">3 – 6 Months</td>
+            <td class="td-strand">4 Months · June 2026</td>
+            <td class="td-note">Leaning seller's market. 11 active listings in May 2026 keeps prices firm.</td>
+          </tr>
+          <tr>
+            <td class="td-metric">STR Gross Yield</td>
+            <td class="td-note">Annual STR Rev ÷ Price × 100</td>
+            <td class="td-range">5% – 8%</td>
+            <td class="td-strand">$9k – $10k/mo</td>
+            <td class="td-note">Even 5–7% gross on a coastal property is compelling. Net yield 3–5% after fees.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 · SUBMARKET COMPS
+  ══════════════════════════════════════ -->
+  <section class="section-block reveal" id="comps">
+    <div class="section-header">
+      <h2>Submarket Footprint <em>Case Studies</em></h2>
+      <span class="section-tag">Closed Sales · Spring 2026 · Source: CRMLS</span>
+    </div>
+
+    <div class="narrative-box" style="border-left-color: var(--gold);">
+      <h3 style="color: #9a7230;">The Single-Family / Multi-Family Bridge</h3>
+      <p>By applying commercial multi-family valuation discipline — analyzing historical seasonality trends, GRM compression, and downside protection underwriting — we uncover the accurate performance reality. While general macro data signals a baseline negotiation haircut of 3%, properties optimized as high-yield short-term assets continuously command severe premiums. Your PE knowledge maps directly: Cap Rate → Gross Yield, Value-Add → Cosmetic Reno, Pro Forma → CMA + STR projections.</p>
+    </div>
+
+    <div class="comp-grid">
+      <div class="comp-card sandfront">
+        <div class="comp-card-left">
+          <h4>3248 Ocean Dr</h4>
+          <p>Direct Sandfront Premium · Closed 5/21/2026</p>
+          <p style="margin-top: 4px;">3 Bed · 1 Bath · 965 Sq Ft</p>
+        </div>
+        <div class="comp-card-right">
+          <span class="price">$1,275,000</span>
+          <span class="ppsf">$1,321 / sq ft</span>
+        </div>
+      </div>
+      <div class="comp-card internal">
+        <div class="comp-card-left">
+          <h4>137 Fillmore Ave</h4>
+          <p>Modern Internal Lane Baseline · Closed 5/21/2026</p>
+          <p style="margin-top: 4px;">3 Bed · 3 Bath · 2,177 Sq Ft</p>
+        </div>
+        <div class="comp-card-right">
+          <span class="price">$1,800,000</span>
+          <span class="ppsf">$827 / sq ft</span>
+        </div>
+      </div>
+      <div class="comp-card scale">
+        <div class="comp-card-left">
+          <h4>5124 Beachcomber St</h4>
+          <p>Scale &amp; Capacity Footprint · Closed 4/1/2026</p>
+          <p style="margin-top: 4px;">4 Bed · 2 Bath · 2,512 Sq Ft</p>
+        </div>
+        <div class="comp-card-right">
+          <span class="price">$1,525,000</span>
+          <span class="ppsf">$607 / sq ft</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRO FORMA -->
+    <div class="proforma">
+      <h3>Short-Term Revenue Pro Forma Projections</h3>
+      <div class="proforma-numbers">
+        <div class="pf-item">
+          <span class="pf-label">Conservative Baseline<br>(AirDNA · 50% Occ)</span>
+          <span class="pf-value">$75,500</span>
+        </div>
+        <div class="pf-item" style="align-self:center;">
+          <span style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:rgba(255,255,255,0.15);">→</span>
+        </div>
+        <div class="pf-item">
+          <span class="pf-label">Optimistic Upside<br>(Rabbu · 75th Pct · 5.9% Gross)</span>
+          <span class="pf-value gold">$107,036</span>
+        </div>
+      </div>
+      <p class="proforma-footnote">Standard 3-bed coastal footprint · Maximum seasonal occupancy management · Annual gross revenue</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 · HUB TOOLS
+  ══════════════════════════════════════ -->
+  <section class="section-block reveal" id="tools">
+    <div class="section-header">
+      <h2>Coastal <em>Intelligence Tools</em></h2>
+      <span class="section-tag">Your Silver Strand Intelligence Stack</span>
+    </div>
+
+    <div class="modules-grid">
+
+      <a class="module-card orange" href="https://www.narrpr.com" target="_blank">
+        <span class="module-icon">🏠</span>
+        <h3>RPR · Realtors Property Resource</h3>
+        <p>Comps, RVM valuations, market trends, and neighborhood data. The foundation of every underwriting analysis.</p>
+        <span class="module-tag">Valuation · Comps</span>
+      </a>
+
+      <a class="module-card ocean" href="https://www.airdna.co" target="_blank">
+        <span class="module-icon">📊</span>
+        <h3>AirDNA · STR Revenue (Conservative)</h3>
+        <p>Market-level short-term rental estimates. Used as the conservative baseline in every STR projection.</p>
+        <span class="module-tag">STR Revenue</span>
+      </a>
+
+      <a class="module-card gold" href="https://www.rabbu.com" target="_blank">
+        <span class="module-icon">📈</span>
+        <h3>Rabbu · STR Revenue (Optimistic)</h3>
+        <p>75th percentile STR projections. Used alongside AirDNA to bracket the realistic revenue range.</p>
+        <span class="module-tag">STR Revenue</span>
+      </a>
+
+      <a class="module-card ocean" href="https://www.dealcheck.io" target="_blank">
+        <span class="module-icon">🔢</span>
+        <h3>DealCheck · Cash Flow Analysis</h3>
+        <p>Mortgage, PITI, cash flow, cap rate, and CoC calculations. Where the numbers either pencil or they don't.</p>
+        <span class="module-tag">Underwriting</span>
+      </a>
+
+      <a class="module-card orange" href="https://www.crmls.org" target="_blank">
+        <span class="module-icon">🔍</span>
+        <h3>CRMLS · Active Listings & Sales Data</h3>
+        <p>California Regional MLS — source for days on market, list-to-sale ratios, and closed sale comps.</p>
+        <span class="module-tag">MLS Data</span>
+      </a>
+
+      <a class="module-card green" href="https://noelleharrelson.github.io/-nh-tracker/coastal-intel.html" target="_blank">
+        <span class="module-icon">🌊</span>
+        <h3>Coastal Market Intelligence Hub</h3>
+        <p>Live buyer-facing hub — six metrics, 93035 market snapshot, sample underwriting, and I'd Live Here property briefs.</p>
+        <span class="module-tag">Live · GitHub Pages</span>
+      </a>
+
+      <a class="module-card gold" href="https://noelleharrelson.github.io/-nh-tracker/chico-court-brief.html" target="_blank">
+        <span class="module-icon">📋</span>
+        <h3>Vol. 004 · 2301 Chico Court Brief</h3>
+        <p>Full standalone underwriting brief — RPR, AirDNA, Rabbu, DealCheck applied to one Silver Strand property.</p>
+        <span class="module-tag">Live · I'd Live Here</span>
+      </a>
+
+      <a class="module-card orange" href="https://noelleharrelson.github.io/-nh-tracker/good-bad-ugly.html" target="_blank">
+        <span class="module-icon">⚖️</span>
+        <h3>Good, Bad & Ugly · Seller Equity Tool</h3>
+        <p>Seller equity analysis across 14 Ventura and Santa Barbara County coastal submarkets.</p>
+        <span class="module-tag">Live · Seller Tool</span>
+      </a>
+
+      <a class="module-card ocean" href="https://www.sbaor.com" target="_blank">
+        <span class="module-icon">🏛️</span>
+        <h3>SBAOR · Santa Barbara Association of REALTORS®</h3>
+        <p>Primary association membership. Broker caravan lists, SB MLS access, education, and networking events.</p>
+        <span class="module-tag">Association</span>
+      </a>
+
+      <a class="module-card gold" href="https://www.vccar.org" target="_blank">
+        <span class="module-icon">🏡</span>
+        <h3>VCCAR · Ventura County Coastal Association</h3>
+        <p>Ventura County association membership. CRMLS access, local market resources, and SentriLock key system.</p>
+        <span class="module-tag">Association</span>
+      </a>
+
+      <div class="module-card green">
+        <span class="module-icon">🤙</span>
+        <h3>Local Knowledge · Silver Strand</h3>
+        <p>STR revenue from neighbors running real Airbnbs. Contractor timelines and real renovation costs. HOA realities, permit quirks, and the blocks that actually perform — from someone who lives here.</p>
+        <span class="module-tag">I Live Here · I Sell Here</span>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="footer-tagline">Investor instincts. Coastal soul.</p>
+  <p>
+    <strong>Noelle Harrelson · REALTOR® · DRE #02239099</strong><br>
+    NextHome Preferred Properties · DRE #01280302 · Steve Decker, Broker<br>
+    988 Fredensborg Canyon Rd, Solvang, CA 93463 · (805) 708-6400<br>
+    <a href="https://noelleharrelson.com" style="color:rgba(255,255,255,0.35); text-decoration:none;">noelleharrelson.com</a> · 
+    <a href="https://noelleharrelson.nhpp.re" style="color:rgba(255,255,255,0.35); text-decoration:none;">noelleharrelson.nhpp.re</a><br><br>
+    Each office is independently owned and operated. · Equal Housing Opportunity.<br>
+    Data source: RPR (Realtors Property Resource®) · CRMLS · Pulled June 2026 · For informational purposes only.
+  </p>
+</footer>
+
+<script>
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
