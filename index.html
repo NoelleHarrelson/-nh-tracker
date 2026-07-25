@@ -183,6 +183,7 @@
   .pin-dot.green   { background: #22c55e; }
   .pin-dot.teal    { background: var(--ocean-bright); }
   .pin-dot.red     { background: #ef4444; }
+  .pin-dot.gray    { background: #9CA3AF; }
 
   /* ── MAIN CONTENT ── */
   .main {
@@ -274,6 +275,7 @@
   .status-badge.active       { background: #F0FDF4; color: #22c55e; border: 1px solid #BBF7D0; }
   .status-badge.watch        { background: #ECFEFF; color: var(--ocean-bright); border: 1px solid #A5F3FC; }
   .status-badge.closed       { background: #FFF1F2; color: #ef4444; border: 1px solid #FECDD3; }
+  .status-badge.passed       { background: #F3F4F6; color: #6B7280; border: 1px solid #E5E7EB; }
 
   .card-body {
     padding: 14px 16px;
@@ -593,6 +595,7 @@
   <span class="pin"><span class="pin-dot orange"></span>Coming Soon</span>
   <span class="pin"><span class="pin-dot green"></span>Active</span>
   <span class="pin"><span class="pin-dot teal"></span>Watch List</span>
+  <span class="pin"><span class="pin-dot gray"></span>Passed</span>
   <span class="pin"><span class="pin-dot red"></span>Closed</span>
 </div>
 
@@ -627,6 +630,7 @@
             <option value="coming-soon">Coming Soon</option>
             <option value="active">Active</option>
             <option value="watch">Watch List</option>
+            <option value="passed">Passed</option>
             <option value="closed">Closed</option>
           </select>
         </div>
@@ -678,19 +682,20 @@
     'coming-soon':  { label: 'Coming Soon',  cls: 'coming-soon',  dot: 'orange' },
     'active':       { label: 'Active',       cls: 'active',       dot: 'green' },
     'watch':        { label: 'Watch List',   cls: 'watch',        dot: 'teal' },
+    'passed':       { label: 'Passed',       cls: 'passed',       dot: 'gray' },
     'closed':       { label: 'Closed',       cls: 'closed',       dot: 'red' }
   };
 
-  let properties = JSON.parse(localStorage.getItem('nh-tracker') || '[]');
+  let properties = JSON.parse(localStorage.getItem('nh-tracker-v2') || '[]');
 
   function saveProperties() {
-    localStorage.setItem('nh-tracker', JSON.stringify(properties));
+    localStorage.setItem('nh-tracker-v2', JSON.stringify(properties));
   }
 
   function updateStats() {
     document.getElementById('stat-total').textContent = properties.length;
     document.getElementById('stat-active').textContent = properties.filter(p => p.status === 'active').length;
-    document.getElementById('stat-underwritten').textContent = properties.filter(p => p.status === 'underwritten').length;
+    document.getElementById('stat-underwritten').textContent = properties.filter(p => p.airdna || p.rabbu).length;
     document.getElementById('stat-closed').textContent = properties.filter(p => p.status === 'closed').length;
   }
 
@@ -788,28 +793,52 @@
   if (properties.length === 0) {
     properties = [
       {
-        address: '2301 Chico Court, Oxnard CA 93035',
+        address: '2425 Panama Dr, Oxnard CA 93035',
         price: '$1,399,000',
-        specs: '2bd / 3ba · 1,583 sqft · 3-Story · No HOA',
-        ppsf: '$884',
-        status: 'coming-soon',
-        airdna: '$75,700/yr',
+        specs: '3bd / 3ba · Hollywood by the Sea · No HOA',
+        ppsf: '$577',
+        status: 'passed',
+        airdna: '$58,300/yr',
         rabbu: '$69,606/yr',
-        yield: '5.4%',
-        str: '$322 ADR · 64% occ',
-        notes: 'Vol. 002 · Priced 11% above RPR RVM of $1.261M. RVM trending down 10.6% YoY. Pencils better at $1.2–1.25M. Seller offering concessions. Triangular corner lot — unique on the street. Low-turnover block.'
+        yield: '—',
+        str: '$244 ADR · 65% occ (Medium comp strength)',
+        notes: 'RPR RVM $1,394,230 (★★★★★ conf) but trending down -7.44% YoY, month change -$9,050. DealCheck: cash needed $321,770 · cash flow -$4,371/mo · cap rate 2% · CoC -16.3%. Hits J. Castro\'s mid-$1.4M DSCR threshold on price but does not pencil for a cash-flow pitch — passed on for now, logged for reference.'
+      },
+      {
+        address: '360 Melrose Dr, Oxnard CA 93035',
+        price: '$1,049,000',
+        specs: '3bd / 2ba · Silver Strand',
+        ppsf: '—',
+        status: 'watch',
+        airdna: '$76,900/yr',
+        rabbu: '',
+        yield: '—',
+        str: '58% occ (High comp strength, correctly configured)',
+        notes: 'Strongest performer of the J. Castro batch — RPR 94% of RVM, RVM trending UP month-over-month (+$14,450). DealCheck: cash flow -$2,439/mo · cap rate 3% · CoC -12.1%. Flagged Active Under Contract on RPR — verify current escrow status in Flexmls before treating as live inventory or resurfacing to J. Castro.'
       },
       {
         address: '148 Los Angeles Ave, Oxnard CA 93035',
-        price: '$1,385,000',
+        price: '$1,295,000',
         specs: '4bd / 2ba · 1,830 sqft · Silver Strand · No HOA',
-        ppsf: '$757',
+        ppsf: '$708',
         status: 'active',
         airdna: '$120,300/yr',
         rabbu: '$175,930/yr',
         yield: '10.7%',
         str: '$696 ADR · 47% occ',
-        notes: 'Vol. 003 · Listed 2.9% BELOW RPR RVM of $1,426,560 — instant equity. Full STR cash flows +$6,921/yr. House hack carry ~$3,435/mo. 7–8 yr STR history. Viking range, Talavera sink, permitted sundeck. Grade: B+. Suggested offer $1,364,225.'
+        notes: 'Vol. 003 · Price dropped $40K (from $1,385,000) — now $131,560 below prior RPR RVM of $1,426,560, deepening the instant-equity read. Full STR cash flows +$6,921/yr at prior pricing; house hack carry ~$3,435/mo. Still under J. Castro\'s mid-$1.4M threshold. AirDNA/Rabbu/DealCheck not yet re-run at new price — worth a fresh pull before resubmitting anywhere. Grade: B+.'
+      },
+      {
+        address: '2301 Chico Court, Oxnard CA 93035',
+        price: '$1,399,000',
+        specs: '2bd / 3ba · 1,583 sqft · 3-Story · No HOA',
+        ppsf: '$884',
+        status: 'coming-soon',
+        airdna: '$70,400/yr',
+        rabbu: '$71,055/yr',
+        yield: '5.1%',
+        str: '$299 ADR · 64% occ',
+        notes: 'Vol. 002 · Priced 11% above RPR RVM of $1.261M, RVM trending down 10.58% YoY (5-star confidence). DealCheck: cash flow -$5,599/mo · cap rate 1% · CoC -20.9% · cash needed $321,770. Pencils better at $1.2–1.25M. Seller offering concessions. Triangular corner lot — unique on the street. Low-turnover block.'
       },
       {
         address: '113 Hueneme Ave, Oxnard CA 93035',
@@ -823,7 +852,7 @@
         str: '$375 ADR · 52% occ',
         notes: 'Vol. 004 · Listed $387K above RPR RVM of $1,107,650. Nearly cash neutral at full STR (~$2,883 net annual carry). 503 active buyers at price point. Rare A-frame — vaulted ceilings, skylights, indoor-outdoor flow. 2026 full refresh. County permits front deck extension — direct ocean views one reno away.'
       },
-    {
+      {
         address: '5040 Island View St, Oxnard CA 93035',
         price: '$1,799,000',
         specs: '3bd / 4ba · 2,492 sqft · 3-Story · Hollywood Beach',
