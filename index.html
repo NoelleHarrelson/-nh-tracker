@@ -719,10 +719,10 @@
     'closed':       { label: 'Closed',       cls: 'closed',       dot: 'red' }
   };
 
-  let properties = JSON.parse(localStorage.getItem('nh-tracker-v4') || '[]');
+  let properties = JSON.parse(localStorage.getItem('nh-tracker-v5') || '[]');
 
   function saveProperties() {
-    localStorage.setItem('nh-tracker-v4', JSON.stringify(properties));
+    localStorage.setItem('nh-tracker-v5', JSON.stringify(properties));
   }
 
   function updateStats() {
@@ -1297,15 +1297,15 @@
       {
         address: '145-147 Hollywood Ave, Oxnard CA 93035',
         price: '$1,195,000',
-        specs: 'Duplex · 3,500 sqft lot · Silverstrand Beach',
-        ppsf: '—',
+        specs: 'Duplex · 2 separate lots · 840 sqft total · 3,500 sqft lot · Silverstrand Beach',
+        ppsf: '$1,422',
         status: 'watch',
         category: 'yield',
         airdna: '',
         rabbu: '',
-        yield: '—',
+        yield: '1.7% cap (pure income) — fails',
         str: '',
-        notes: 'NEW 7/31 — surfaced in Silver Strand SFR sweep but is actually a Duplex (MLS sub-type DU), so it belongs here, not the farm/appreciation bucket. Not yet underwritten — worth a full stack given it sits in your primary farm geography.'
+        notes: 'FULLY UNDERWRITTEN 7/31. Unit config: 2bd/1ba (500sf) + 1bd/1ba (340sf). Seller claimed $100K+ combined STR income — does not hold up. Confirmed real rent comps via DealCheck: 2BD unit $2,250/mo (144 E Pearl St comp, 96.7% similar), 1BR unit $2,050/mo (398 Highland Dr + 132 Hollywood Ave comps, both ~$2,050-2,200). Total gross rent $4,300/mo. DealCheck final at correct $1,195,000 price: cap rate 1.7%, cash flow -$4,042/mo, CoC -17.6% — fails badly as pure income play, worse than every multifamily sweep property. REAL THESIS: house-hack only. Owner-occupant financing (10% down ~$119,500), est. PITI ~$8,400/mo, offset by renting 1BR at $2,050 confirmed → net housing cost ~$6,350/mo (~24% reduction). Two separate lots — future ADU/rebuild potential. Content angle: I\'d Live Here house-hack framing, not investor pitch.'
       }
     ];
     saveProperties();
