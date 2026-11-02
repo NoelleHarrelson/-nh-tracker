@@ -557,7 +557,7 @@
     </div>
     <div class="hstat">
       <span class="hstat-num" id="stat-closed">0</span>
-      <span class="hstat-label">Closed</span>
+      <span class="hstat-label">Closed Comps</span>
     </div>
   </div>
 </div>
@@ -612,7 +612,7 @@
   <span class="pin"><span class="pin-dot purple"></span>Active Under Contract</span>
   <span class="pin"><span class="pin-dot amber"></span>Withdrawn</span>
   <span class="pin"><span class="pin-dot gray"></span>Passed</span>
-  <span class="pin"><span class="pin-dot red"></span>Closed</span>
+  <span class="pin"><span class="pin-dot red"></span>Closed Comp</span>
 </div>
 
 <!-- MAIN -->
@@ -716,19 +716,19 @@
     'auc':          { label: 'Active Under Contract', cls: 'auc', dot: 'purple' },
     'withdrawn':    { label: 'Withdrawn',    cls: 'withdrawn',    dot: 'amber' },
     'passed':       { label: 'Passed',       cls: 'passed',       dot: 'gray' },
-    'closed':       { label: 'Closed',       cls: 'closed',       dot: 'red' }
+    'closed':       { label: 'Closed Comp',       cls: 'closed',       dot: 'red' }
   };
 
-  let properties = JSON.parse(localStorage.getItem('nh-tracker-v5') || '[]');
+  let properties = JSON.parse(localStorage.getItem('nh-tracker-v6') || '[]');
 
   function saveProperties() {
-    localStorage.setItem('nh-tracker-v5', JSON.stringify(properties));
+    localStorage.setItem('nh-tracker-v6', JSON.stringify(properties));
   }
 
   function updateStats() {
     document.getElementById('stat-total').textContent = properties.length;
     document.getElementById('stat-active').textContent = properties.filter(p => p.status === 'active').length;
-    document.getElementById('stat-underwritten').textContent = properties.filter(p => p.airdna || p.rabbu).length;
+    document.getElementById('stat-underwritten').textContent = properties.filter(p => p.airdna || p.rabbu || (p.yield && p.yield !== '—')).length;
     document.getElementById('stat-closed').textContent = properties.filter(p => p.status === 'closed').length;
   }
 
@@ -864,16 +864,16 @@
       },
       {
         address: '360 Melrose Dr, Oxnard CA 93035',
-        price: '$1,049,000',
-        specs: '3bd / 2ba · Silver Strand',
-        ppsf: '—',
-        status: 'auc',
+        price: '$979,000',
+        specs: '3bd / 2ba · 1,498 sqft · 1,751 sqft lot · Hollywood By The Sea · 1-car garage · No HOA',
+        ppsf: '$654',
+        status: 'active',
         category: 'farm',
-        airdna: '$76,900/yr',
-        rabbu: '',
-        yield: '—',
-        str: '58% occ (High comp strength, correctly configured)',
-        notes: 'CONFIRMED AUC 7/10/26. Strongest performer of the J. Castro batch — RPR 94% of RVM, RVM trending UP month-over-month (+$14,450). DealCheck: cash flow -$2,439/mo · cap rate 3% · CoC -12.1%. No longer available to pursue — logged as reference/comp until it closes.'
+        airdna: '$80,900/yr',
+        rabbu: '~$106,000/yr (Rabbu AI, verify comps)',
+        yield: '8.3%',
+        str: '$363 ADR · 61% occ (Medium comp strength)',
+        notes: 'RE-UNDERWRITTEN 11/2/26 at $979K. BACK ON MARKET 11/1/26 · MLS V1-39563 · APN 2060313080. Relisted $70K below the $1,049,000 it was under contract at in July (AUC appears to have fallen out; confirm why with listing agent). RPR: RVM $1,033,220 (5-star conf), range $981.6K–$1.09M, 95% price-to-value, list ~$54K UNDER RVM; RVM month +$18,120, year -10.3%. AirDNA: $80.9K/yr incl. $10,985 cleaning fees, 61% occ, $363 ADR, comp strength dropped High to Medium since July. Rabbu (now AI chat): ~$106K/yr off 8 comps ($101K–$127K) but comps run $500–$1,200 ADR and 10–90% occ, likely bigger/beachfront homes; treat as upside only until comps verified. DealCheck (80% LTV, 6% rate, ARV $1,014,000): cash needed $225,170 · cash flow -$2,198/mo · cap 3.1% · CoC -11.7%. 6% is optimistic for DSCR; at ~7.5% expect roughly -$2,850/mo. Verdict: not a yield play; below-RVM entry + 2025 roof/finishes = appreciation/value buy. House-hack angle: downstairs bed/bath/den with private entrance (confirm permitted). Flag to J. Castro. Comp: 253 Melrose closed $1,420,000 7/30/26 (4bd/3ba).'
       },
       {
         address: '148 Los Angeles Ave, Oxnard CA 93035',
