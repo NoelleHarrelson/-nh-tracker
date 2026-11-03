@@ -402,6 +402,27 @@ body {
 .comp-card.sandfront .ppsf { background: rgba(30,95,116,0.1); color: var(--ocean-mid); }
 .comp-card.internal .ppsf { background: rgba(46,125,82,0.1); color: var(--green); }
 .comp-card.scale .ppsf { background: rgba(212,168,90,0.12); color: #9a7230; }
+/* pipeline (shared data: pipeline-data.js) */
+.pipe-filters { display:flex; flex-wrap:wrap; gap:8px; margin: 8px 0 18px; }
+.pipe-chip { font-family:'Jost',sans-serif; font-size:0.78rem; letter-spacing:0.06em; padding:7px 14px; border-radius:999px; border:1px solid var(--rule); background:var(--white); color:var(--smoke); cursor:pointer; }
+.pipe-chip.on { background:var(--ocean-mid); border-color:var(--ocean-mid); color:var(--white); }
+.comp-card.st-active { border-left:4px solid #22c55e; }
+.comp-card.st-watch { border-left:4px solid var(--ocean); }
+.comp-card.st-underwritten { border-left:4px solid #3B82F6; }
+.comp-card.st-auc { border-left:4px solid #A855F7; }
+.comp-card.st-closed { border-left:4px solid var(--red); }
+.comp-card.st-withdrawn, .comp-card.st-passed, .comp-card.st-off-market { border-left:4px solid var(--mist); opacity:0.75; }
+.status-badge { display:inline-block; margin-top:8px; font-size:0.66rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; }
+.status-badge.underwritten { background:#EFF6FF; color:#3B82F6; }
+.status-badge.active { background:#F0FDF4; color:#15803d; }
+.status-badge.watch { background:#ECFEFF; color:#0e7490; }
+.status-badge.auc { background:#FAF5FF; color:#A855F7; }
+.status-badge.closed { background:#FFF1F2; color:#b91c1c; }
+.status-badge.withdrawn { background:#FFFBEB; color:#B45309; }
+.status-badge.off-market, .status-badge.passed { background:#F3F4F6; color:#4B5563; }
+.uw-tag { display:inline-block; margin-left:6px; font-size:0.66rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:var(--gold-soft); color:#9a7230; }
+.comp-card-right .str-line { display:block; margin-top:6px; font-size:0.72rem; color:var(--smoke); }
+.pipe-foot { font-size:0.72rem; color:var(--mist); margin-top:12px; }
 
 /* ── PRO FORMA ── */
 .proforma {
@@ -844,36 +865,36 @@ body {
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner" id="tickerInner">
-    <span class="ticker-item">93035 Median Sold <strong>$888K</strong> <span class="up">97.1% List-to-Sale</span></span>
+    <span class="ticker-item">93035 Median Value <strong>$939K</strong> <span class="up">▲ 4.6% YoY</span></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Median DOM <strong>43 Days</strong></span>
+    <span class="ticker-item">Median DOM <strong>37 Days</strong></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Supply <strong>4 Months</strong> <span class="neutral">Balanced Market</span></span>
+    <span class="ticker-item">Supply <strong>4.5 Months</strong> <span class="neutral">▼ 13.2% YoY</span></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">List-to-Sale <strong>97%</strong> Macro Baseline</span>
+    <span class="ticker-item">Sold-to-List <strong>96.8%</strong> Sept 2026</span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">STR Revenue Floor <strong>$75,500/yr</strong></span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">STR Optimistic <strong>$107,036/yr</strong></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Strand Active Listings <strong>June 2026</strong></span>
+    <span class="ticker-item">Strand Active <strong>15 Listings</strong> <span class="neutral">$1.40M Median List · Nov 2026</span></span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">GRM Strand Reality <strong>14–17x</strong></span>
     <span class="ticker-sep">·</span>
     <!-- duplicate for seamless scroll -->
-    <span class="ticker-item">93035 Median Sold <strong>$888K</strong> <span class="up">97.1% List-to-Sale</span></span>
+    <span class="ticker-item">93035 Median Value <strong>$939K</strong> <span class="up">▲ 4.6% YoY</span></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Median DOM <strong>43 Days</strong></span>
+    <span class="ticker-item">Median DOM <strong>37 Days</strong></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Supply <strong>4 Months</strong> <span class="neutral">Balanced Market</span></span>
+    <span class="ticker-item">Supply <strong>4.5 Months</strong> <span class="neutral">▼ 13.2% YoY</span></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">List-to-Sale <strong>97%</strong> Macro Baseline</span>
+    <span class="ticker-item">Sold-to-List <strong>96.8%</strong> Sept 2026</span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">STR Revenue Floor <strong>$75,500/yr</strong></span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">STR Optimistic <strong>$107,036/yr</strong></span>
     <span class="ticker-sep">·</span>
-    <span class="ticker-item">Strand Active Listings <strong>June 2026</strong></span>
+    <span class="ticker-item">Strand Active <strong>15 Listings</strong> <span class="neutral">$1.40M Median List · Nov 2026</span></span>
     <span class="ticker-sep">·</span>
     <span class="ticker-item">GRM Strand Reality <strong>14–17x</strong></span>
   </div>
@@ -887,34 +908,34 @@ body {
   <section class="section-block reveal" id="market">
     <div class="section-header">
       <h2>Coastal Market <em>Intelligence</em></h2>
-      <span class="section-tag">93035 · June 2026 · Source: RPR + CRMLS</span>
+      <span class="section-tag">93035 · SF + Condo · Sept 2026 · Source: RPR</span>
     </div>
 
     <!-- MACRO METRICS -->
     <div class="metrics-grid">
       <div class="metric-card">
-        <span class="mc-label">93035 Median Price</span>
-        <span class="mc-value">$888K</span>
-        <span class="mc-sub">Median Sold Price</span>
-        <span class="mc-delta up">97.1% List-to-Sale</span>
+        <span class="mc-label">93035 Median Value</span>
+        <span class="mc-value">$939K</span>
+        <span class="mc-sub">Median Est. Value · RPR</span>
+        <span class="mc-delta up">▲ 4.6% · 12 months</span>
       </div>
       <div class="metric-card gold-accent">
         <span class="mc-label">Market Velocity</span>
-        <span class="mc-value">43</span>
+        <span class="mc-value">37</span>
         <span class="mc-sub">Median Days on Market</span>
-        <span class="mc-delta neutral">Balanced · room to negotiate</span>
+        <span class="mc-delta neutral">Balanced range (30–60 days)</span>
       </div>
       <div class="metric-card ocean-accent">
         <span class="mc-label">Inventory Supply</span>
-        <span class="mc-value">4 mo</span>
+        <span class="mc-value">4.5 mo</span>
         <span class="mc-sub">Months of Supply</span>
-        <span class="mc-delta neutral">Balanced leaning seller</span>
+        <span class="mc-delta neutral">▼ 13.2% YoY · tightening</span>
       </div>
       <div class="metric-card">
-        <span class="mc-label">List-to-Sale Ratio</span>
-        <span class="mc-value">97%</span>
-        <span class="mc-sub">Macro Baseline Avg.</span>
-        <span class="mc-delta neutral">Side streets: 87–99%</span>
+        <span class="mc-label">Sold-to-List Ratio</span>
+        <span class="mc-value">96.8%</span>
+        <span class="mc-sub">93035 Median · Sept 2026</span>
+        <span class="mc-delta neutral">$623 median $/sq ft</span>
       </div>
     </div>
 
@@ -954,22 +975,22 @@ body {
             <td class="td-metric">Days on Market</td>
             <td class="td-note">Listed Date → Accepted Offer</td>
             <td class="td-range">&lt; 21 Days (hot)</td>
-            <td class="td-strand">43 Days avg · June 2026</td>
+            <td class="td-strand">37 days median · Sept 2026</td>
             <td class="td-note">Under 30 = highly competitive. 60+ = motivated seller territory.</td>
           </tr>
           <tr>
             <td class="td-metric">List-to-Sale Ratio</td>
             <td class="td-note">Sale Price ÷ List Price × 100</td>
             <td class="td-range">97% – 103%</td>
-            <td class="td-strand">97.1% avg · slight buyer leverage</td>
+            <td class="td-strand">96.8% median · Sept 2026</td>
             <td class="td-note">Side streets show excellent negotiation margins. Beach block runs tighter.</td>
           </tr>
           <tr>
             <td class="td-metric">Absorption Rate</td>
             <td class="td-note">Sold/Mo ÷ Active Listings</td>
             <td class="td-range">3 – 6 Months</td>
-            <td class="td-strand">4 Months · June 2026</td>
-            <td class="td-note">Leaning seller's market. 11 active listings in May 2026 keeps prices firm.</td>
+            <td class="td-strand">4.5 months · Sept 2026</td>
+            <td class="td-note">Down 13.2% year over year, from a mid-2025 peak near 5.7 months. 15 active Strand listings (Nov 3, 2026).</td>
           </tr>
           <tr>
             <td class="td-metric">STR Gross Yield</td>
@@ -988,8 +1009,8 @@ body {
   ══════════════════════════════════════ -->
   <section class="section-block reveal" id="comps">
     <div class="section-header">
-      <h2>Submarket Footprint <em>Case Studies</em></h2>
-      <span class="section-tag">Closed Sales · Spring 2026 · Source: CRMLS</span>
+      <h2>Silver Strand <em>Pipeline</em></h2>
+      <span class="section-tag">Live Pipeline · Updated Nov 3, 2026 · Source: CRMLS + RPR</span>
     </div>
 
     <div class="narrative-box" style="border-left-color: var(--gold);">
@@ -997,41 +1018,15 @@ body {
       <p>By applying commercial multi-family valuation discipline — analyzing historical seasonality trends, GRM compression, and downside protection underwriting — we uncover the accurate performance reality. While general macro data signals a baseline negotiation haircut of 3%, properties optimized as high-yield short-term assets continuously command severe premiums. Your PE knowledge maps directly: Cap Rate → Gross Yield, Value-Add → Cosmetic Reno, Pro Forma → CMA + STR projections.</p>
     </div>
 
-    <div class="comp-grid">
-      <div class="comp-card sandfront">
-        <div class="comp-card-left">
-          <h4>3248 Ocean Dr</h4>
-          <p>Direct Sandfront Premium · Closed 5/21/2026</p>
-          <p style="margin-top: 4px;">3 Bed · 1 Bath · 965 Sq Ft</p>
-        </div>
-        <div class="comp-card-right">
-          <span class="price">$1,275,000</span>
-          <span class="ppsf">$1,321 / sq ft</span>
-        </div>
-      </div>
-      <div class="comp-card internal">
-        <div class="comp-card-left">
-          <h4>137 Fillmore Ave</h4>
-          <p>Modern Internal Lane Baseline · Closed 5/21/2026</p>
-          <p style="margin-top: 4px;">3 Bed · 3 Bath · 2,177 Sq Ft</p>
-        </div>
-        <div class="comp-card-right">
-          <span class="price">$1,800,000</span>
-          <span class="ppsf">$827 / sq ft</span>
-        </div>
-      </div>
-      <div class="comp-card scale">
-        <div class="comp-card-left">
-          <h4>5124 Beachcomber St</h4>
-          <p>Scale &amp; Capacity Footprint · Closed 4/1/2026</p>
-          <p style="margin-top: 4px;">4 Bed · 2 Bath · 2,512 Sq Ft</p>
-        </div>
-        <div class="comp-card-right">
-          <span class="price">$1,525,000</span>
-          <span class="ppsf">$607 / sq ft</span>
-        </div>
-      </div>
+    <div class="pipe-filters" id="pipeFilters">
+      <button class="pipe-chip on" data-f="active">Active</button>
+      <button class="pipe-chip" data-f="watch">Watch List</button>
+      <button class="pipe-chip" data-f="closed">Closed Comps</button>
+      <button class="pipe-chip" data-f="yield">Multifamily</button>
+      <button class="pipe-chip" data-f="all">All</button>
     </div>
+    <div class="comp-grid" id="pipelineGrid"></div>
+    <p class="pipe-foot" id="pipeFoot"></p>
 
     <!-- PRO FORMA -->
     <div class="proforma">
@@ -1159,11 +1154,52 @@ body {
     <a href="https://noelleharrelson.com" style="color:rgba(255,255,255,0.35); text-decoration:none;">noelleharrelson.com</a> · 
     <a href="https://noelleharrelson.nhpp.re" style="color:rgba(255,255,255,0.35); text-decoration:none;">noelleharrelson.nhpp.re</a><br><br>
     Each office is independently owned and operated. · Equal Housing Opportunity.<br>
-    Data source: RPR (Realtors Property Resource®) · CRMLS · Pulled June 2026 · For informational purposes only.
+    Market data: RPR (Realtors Property Resource®) · 93035 · SF + Condo · Sept 2026. Listings: CRMLS · Nov 3, 2026. For informational purposes only.
   </p>
 </footer>
 
+<script src="pipeline-data.js"></script>
 <script>
+(function () {
+  const LABELS = { 'underwritten':'Underwritten', 'coming-soon':'Coming Soon', 'active':'Active', 'watch':'Watch List',
+    'auc':'Under Contract', 'withdrawn':'Withdrawn', 'off-market':'Off Market', 'passed':'Passed', 'closed':'Closed Comp' };
+  const ORDER = ['active','watch','underwritten','auc','coming-soon','closed','off-market','withdrawn','passed'];
+  const data = (window.NH_PIPELINE || []);
+  const grid = document.getElementById('pipelineGrid');
+  const foot = document.getElementById('pipeFoot');
+  if (!grid) return;
+  const uw = p => !!(p.airdna || p.rabbu || (p.yield && p.yield !== '—'));
+  function pick(f) {
+    if (f === 'yield') return data.filter(p => p.category === 'yield');
+    const farm = data.filter(p => p.category !== 'yield');
+    if (f === 'all') return farm;
+    return farm.filter(p => p.status === f || (f === 'watch' && p.status === 'auc'));
+  }
+  function render(f) {
+    const list = pick(f).slice().sort((a,b) => (ORDER.indexOf(a.status) - ORDER.indexOf(b.status)) || (uw(b) - uw(a)));
+    grid.innerHTML = list.length ? list.map(p => `
+      <div class="comp-card st-${p.status}">
+        <div class="comp-card-left">
+          <h4>${(p.address || '').replace(/, Oxnard CA 9303\d|, Port Hueneme CA 93041/, '')}</h4>
+          <p>${p.specs || ''}</p>
+          <span class="status-badge ${p.status}">${LABELS[p.status] || p.status}</span>${uw(p) ? '<span class="uw-tag">Underwritten</span>' : ''}
+        </div>
+        <div class="comp-card-right">
+          <span class="price">${p.price || '—'}</span>
+          ${(p.ppsf && p.ppsf !== '—') ? `<span class="ppsf">${p.ppsf} / sq ft</span>` : ''}
+          ${p.airdna ? `<span class="str-line">AirDNA ${p.airdna}</span>` : ''}
+          ${(p.yield && p.yield !== '—') ? `<span class="str-line">${p.yield}</span>` : ''}
+        </div>
+      </div>`).join('') : '<p class="pipe-foot">Nothing in this view yet.</p>';
+    foot.textContent = list.length + ' properties · ' + list.filter(uw).length + ' underwritten';
+  }
+  document.querySelectorAll('.pipe-chip').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.pipe-chip').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on'); render(btn.dataset.f);
+  }));
+  render('active');
+})();
+
 function scrollToSection(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
