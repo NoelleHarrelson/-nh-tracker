@@ -3,7 +3,7 @@
    Last updated: Nov 15, 2026
    To update: edit this file only, then bump DATA_VERSION by 1.
    ═══════════════════════════════════════════════════════════ */
-window.NH_DATA_VERSION = 8;
+window.NH_DATA_VERSION = 10;
 window.NH_PIPELINE = [
 
       /* ═══════════════════ FARM — SFR / STR PLAYS ═══════════════════ */
@@ -163,7 +163,7 @@ window.NH_PIPELINE = [
         rabbu: '~$106,000/yr (Rabbu AI, verify comps)',
         yield: '8.3%',
         str: '$363 ADR · 61% occ (Medium comp strength)',
-        notes: 'RE-UNDERWRITTEN 11/2/26 at $979K. BACK ON MARKET 11/1/26 · MLS V1-39563 · APN 2060313080. Relisted $70K below the $1,049,000 it was under contract at in July (AUC appears to have fallen out; confirm why with listing agent). RPR: RVM $1,033,220 (5-star conf), range $981.6K–$1.09M, 95% price-to-value, list ~$54K UNDER RVM; RVM month +$18,120, year -10.3%. AirDNA: $80.9K/yr incl. $10,985 cleaning fees, 61% occ, $363 ADR, comp strength dropped High to Medium since July. Rabbu (now AI chat): ~$106K/yr off 8 comps ($101K–$127K) but comps run $500–$1,200 ADR and 10–90% occ, likely bigger/beachfront homes; treat as upside only until comps verified. DealCheck (80% LTV, 6% rate, ARV $1,014,000): cash needed $225,170 · cash flow -$2,198/mo · cap 3.1% · CoC -11.7%. 6% is optimistic for DSCR; at ~7.5% expect roughly -$2,850/mo. Verdict: not a yield play; below-RVM entry + 2025 roof/finishes = appreciation/value buy. House-hack angle: downstairs bed/bath/den with private entrance (confirm permitted). Comp: 253 Melrose closed $1,420,000 7/30/26 (4bd/3ba).'
+        notes: 'RE-UNDERWRITTEN 11/2/26 at $979K. BACK ON MARKET 11/1/26 · MLS V1-39563 · APN 2060313080. Relisted $70K below the $1,049,000 it was under contract at in July (prior escrow cancelled in July; relisted 11/1). RPR: RVM $1,033,220 (5-star conf), range $981.6K–$1.09M, 95% price-to-value, list ~$54K UNDER RVM; RVM month +$18,120, year -10.3%. AirDNA: $80.9K/yr incl. $10,985 cleaning fees, 61% occ, $363 ADR, comp strength dropped High to Medium since July. Rabbu (now AI chat): ~$106K/yr off 8 comps ($101K–$127K) but comps run $500–$1,200 ADR and 10–90% occ, likely bigger/beachfront homes; treat as upside only until comps verified. DealCheck (80% LTV, 6% rate, ARV $1,014,000): cash needed $225,170 · cash flow -$2,198/mo · cap 3.1% · CoC -11.7%. 6% is optimistic for DSCR; at ~7.5% expect roughly -$2,850/mo. Verdict: not a yield play; below-RVM entry + 2025 roof/finishes = appreciation/value buy. House-hack angle: downstairs bed/bath/den with private entrance (confirm permitted). Comp: 253 Melrose closed $1,420,000 7/30/26 (4bd/3ba).'
       },
       {
         address: '148 Los Angeles Ave, Oxnard CA 93035',
