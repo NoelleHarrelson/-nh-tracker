@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════════
    NH PIPELINE DATA · single source for index.html + market-intelligence.html
-   Last updated: Nov 3, 2026
+   Last updated: Nov 15, 2026
    To update: edit this file only, then bump DATA_VERSION by 1.
    ═══════════════════════════════════════════════════════════ */
-window.NH_DATA_VERSION = 7;
+window.NH_DATA_VERSION = 8;
 window.NH_PIPELINE = [
 
       /* ═══════════════════ FARM — SFR / STR PLAYS ═══════════════════ */
@@ -11,119 +11,106 @@ window.NH_PIPELINE = [
       {
         address: '2916 Lakeshore Ct, Oxnard CA 93035',
         price: '$1,699,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '4bd / 3ba · 1,940 sqft · 2,613 sqft lot · Built 1955 · Hollywood by the Sea',
+        ppsf: '$876',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS V1-39223. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS V1-39223. Ocean and harbor views, 1-car garage. Long listing history: sold $1,640,000 9/2021; relisted $2,100,000 3/2025, then $1,899,000 2/2026; now $1,699,000. Also advertised as a furnished 12-month rental at $6,000/mo. Not yet underwritten.'
       },
       {
         address: '128 Pasadena Ave, Oxnard CA 93035',
         price: '$1,495,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '3bd / 2ba · 1,055 sqft · 2,448 sqft lot · Single-story · Silver Strand',
+        ppsf: '$1,417',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS V1-39389. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS V1-39389 (Ann Howarth, RE/MAX Gold Coast). Rooftop deck with peekaboo ocean views, about a one-minute walk to the sand. Listing says it is CURRENTLY OPERATING AS A SHORT-TERM RENTAL: ask for booking history and confirm the County TRU permit. Not yet underwritten.'
       },
       {
         address: '261 Hollywood Blvd, Oxnard CA 93035',
         price: '$1,349,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '3bd / 2ba · 2,036 sqft · 2,178 sqft lot · Built 1975 · 2-car garage · Hollywood by the Sea',
+        ppsf: '$663',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS V1-39178. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS V1-39178 (Ann Howarth, RE/MAX Gold Coast). Listed at $1,399,000 in Oct; $1,349,000 as of 11/3. A 1-bedroom sea-view unit at this address shows up on booking sites as a vacation rental: confirm whether it is a separate permitted unit. Not yet underwritten.'
       },
       {
         address: '152 Highland Dr, Oxnard CA 93035',
         price: '$1,540,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '4bd / 2.5ba · 2,282 sqft · 2,450 sqft lot · Built 1986 · 3-story · Silver Strand',
+        ppsf: '$675',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS V1-39017. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS V1-39017 (Michele Losey, RE/MAX Gold Coast). Relist: was MLS 226002110 (Shane Homes) in May 2026 at $1,650,000, cut to $1,570,000; now $1,540,000. Harbor and ocean views. Not yet underwritten.'
       },
       {
         address: '129 Van Nuys Ave, Oxnard CA 93035',
         price: '$1,290,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '4bd / 3ba · 2,068 sqft · Built 1979 · 2-car garage · Silver Strand',
+        ppsf: '$624',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS 226004379. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS 226004379 (Nikki O\'Connell, The ONE Luxury Properties). Custom 1979 build half a block from the sand: wood-beam ceilings, three fireplaces, built-ins. Listed at $1,425,000; $1,290,000 as of 11/3. Lowest $/sqft of the new group. Not yet underwritten.'
       },
       {
         address: '256 Melrose Dr, Oxnard CA 93035',
         price: '$1,399,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '3bd / 2.5ba · 1,347 sqft · 2,880 sqft lot (oversized) · Built 1960 · Hollywood by the Sea',
+        ppsf: '$1,039',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS V1-39062. Not yet underwritten.'
-      },
-      {
-        address: '117 Sawtelle Ave, Oxnard CA 93035',
-        price: '$1,525,000',
-        specs: 'Silver Strand',
-        ppsf: '',
-        status: 'active',
-        category: 'farm',
-        airdna: '',
-        rabbu: '',
-        yield: '—',
-        str: '',
-        notes: 'Active 11/3/26 · MLS OC-26205144. MLS shows city as Irvine (data error). Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS V1-39062 (Ann Howarth, RE/MAX Gold Coast). Relist: listed $1,499,000 in May 2025 (V1-29992); sold $970,000 6/2021. Remarks pitch it for Airbnb. Same street as 360 Melrose, a useful comp. Not yet underwritten.'
       },
       {
         address: '1505 Ocean Dr, Oxnard CA 93035',
         price: '$3,490,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '4bd / 3ba · 3,226 sqft · 2,550 sqft lot · Built 1960 · 3-story · Oceanfront · Silver Strand',
+        ppsf: '$1,082',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS SR-26174470. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS SR-26174470 (Stephanie Novak, Equity Union). Cut from $3,690,000 to $3,590,000 (9/2) to $3,490,000 (9/13). FLAG: an earlier listing said Ventura County found permit violations requiring major renovation. Confirm before treating as a comp. Not yet underwritten.'
       },
       {
         address: '305 Ocean Dr, Oxnard CA 93035',
         price: '$3,895,000',
-        specs: 'Silver Strand',
-        ppsf: '',
+        specs: '5bd / 4ba · 2,428 sqft · Built 1977 · 3-story · Oceanfront · Silver Strand',
+        ppsf: '$1,604',
         status: 'active',
         category: 'farm',
         airdna: '',
         rabbu: '',
         yield: '—',
         str: '',
-        notes: 'Active 11/3/26 · MLS 00-26865693. Not yet underwritten.'
+        notes: 'Active 11/3/26 · MLS 00-26865693 (Cynthia Ambuehl, Christie\'s). Has County STR permit TRU25-0049 and is marketed as "Ocean Opulence," a furnished monthly rental at $10,000/mo through RE/MAX Gold Coast Property Management. Real operating history exists: ask for it. Not yet underwritten.'
       },
       {
         address: '136 San Fernando Ave, Oxnard CA 93035',
