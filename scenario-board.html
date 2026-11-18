@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strand Scenario Board — Noelle Harrelson</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8601C;
+    --ocean-deep: #152f3a;
+    --ocean-mid: #1E5F74;
+    --ocean: #2E8BA0;
+    --seafoam: #9DCBD8;
+    --gold: #D4A85A;
+    --sand: #FAF6F1;
+    --warm: #F5EDE0;
+    --white: #FFFFFF;
+    --ink: #1C1C1C;
+    --smoke: #5A5550;
+    --mist: #9B9490;
+    --rule: #E0D8CE;
+    --green: #2E7D52;
+    --red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--sand); font-family: 'Jost', sans-serif; color: var(--ink); line-height: 1.5; }
+  a { color: var(--ocean-mid); }
+
+  .header { background: linear-gradient(135deg, #152f3a 0%, #1E5F74 42%, #2E8BA0 78%, #1a5568 100%); padding: 34px 28px 30px; color: var(--white); }
+  .header .eyebrow { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .header h1 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 2.2rem; line-height: 1.1; margin-top: 6px; }
+  .header h1 span { color: var(--gold); font-style: italic; }
+  .header p.lede { max-width: 640px; margin-top: 10px; font-size: 0.95rem; color: rgba(255,255,255,0.82); font-weight: 300; }
+  .header nav { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .header nav a { color: var(--white); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.35); padding: 6px 12px; border-radius: 999px; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  section { margin: 34px 0; }
+  h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.7rem; color: var(--ocean-deep); }
+  h2 small { display: block; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); font-weight: 500; margin-bottom: 2px; }
+  .sub { color: var(--smoke); font-size: 0.92rem; max-width: 720px; margin-top: 6px; }
+
+  .controls { background: var(--white); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 18px; margin-top: 16px; display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: flex-end; }
+  .ctl label { display: block; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); margin-bottom: 4px; }
+  .ctl input[type=number], .ctl select { font-family: 'Jost', sans-serif; font-size: 0.95rem; padding: 7px 9px; border: 1px solid var(--rule); border-radius: 8px; width: 110px; background: var(--sand); }
+  .ctl.check { display: flex; gap: 8px; align-items: center; padding-bottom: 8px; }
+  .ctl.check label { margin: 0; }
+
+  .sortbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .chip { font-family: 'Jost', sans-serif; font-size: 0.76rem; padding: 6px 13px; border-radius: 999px; border: 1px solid var(--rule); background: var(--white); color: var(--smoke); cursor: pointer; }
+  .chip.on { background: var(--ocean-deep); color: var(--white); border-color: var(--ocean-deep); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 16px; }
+  .card { background: var(--white); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 18px; cursor: pointer; transition: box-shadow .15s, border-color .15s; }
+  .card:hover, .card.sel { border-color: var(--ocean); box-shadow: 0 4px 18px rgba(30,95,116,0.12); }
+  .card .addr { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.25rem; color: var(--ocean-deep); line-height: 1.15; }
+  .card .meta { font-size: 0.78rem; color: var(--mist); margin-top: 2px; }
+  .badge { display: inline-block; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; font-family: 'Jost', sans-serif; font-weight: 500; }
+  .badge.active { background: rgba(46,125,82,0.1); color: var(--green); }
+  .badge.watch { background: rgba(46,139,160,0.12); color: var(--ocean-mid); }
+  .badge.auc { background: rgba(120,80,160,0.12); color: #6b4a9b; }
+  .badge.underwritten { background: rgba(0,115,166,0.1); color: #0073A6; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin-top: 12px; }
+  .stat .k { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mist); }
+  .stat .v { font-size: 1.05rem; font-weight: 500; }
+  .stat .v.hl { color: var(--orange); }
+  .card .cta { margin-top: 12px; font-size: 0.74rem; color: var(--ocean-mid); letter-spacing: 0.06em; }
+
+  .panel { background: var(--white); border: 1px solid var(--rule); border-radius: 16px; padding: 22px 20px; margin-top: 18px; }
+  .panel h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--ocean-deep); font-weight: 600; }
+  .inputs { display: flex; flex-wrap: wrap; gap: 14px 20px; margin: 14px 0 6px; padding: 14px; background: var(--warm); border-radius: 12px; }
+  .note { font-size: 0.78rem; color: var(--smoke); margin-top: 8px; }
+  .tablewrap { overflow-x: auto; margin-top: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 760px; }
+  th { text-align: right; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mist); font-weight: 500; padding: 8px; border-bottom: 1px solid var(--rule); }
+  th:first-child, td:first-child { text-align: left; }
+  td { text-align: right; padding: 9px 8px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  td:first-child { white-space: normal; min-width: 210px; }
+  td .tag { display: block; font-size: 0.7rem; color: var(--mist); }
+  td input { width: 74px; font-family: 'Jost', sans-serif; font-size: 0.85rem; padding: 4px 6px; border: 1px solid var(--rule); border-radius: 6px; text-align: right; background: #FFFBF2; }
+  .pos { color: var(--green); font-weight: 500; }
+  .neg { color: var(--red); font-weight: 500; }
+  .group td { background: var(--sand); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); font-weight: 600; text-align: left; }
+
+  .owner-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
+  .path { background: var(--white); border: 1px solid var(--rule); border-radius: 14px; padding: 16px; }
+  .path .name { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); }
+  .path .big { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; line-height: 1.1; margin-top: 4px; }
+  .path .small { font-size: 0.8rem; color: var(--smoke); }
+
+  .cta-box { background: linear-gradient(135deg, #152f3a, #1E5F74); color: var(--white); border-radius: 16px; padding: 26px 24px; }
+  .cta-box h2 { color: var(--white); }
+  .cta-box p { color: rgba(255,255,255,0.82); margin-top: 8px; max-width: 640px; }
+  .cta-box .btns { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-box a { background: var(--orange); color: var(--white); text-decoration: none; padding: 10px 18px; border-radius: 999px; font-size: 0.85rem; letter-spacing: 0.04em; }
+  .cta-box a.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.45); }
+
+  .fine { font-size: 0.74rem; color: var(--mist); max-width: 860px; }
+  .footer { background: var(--ocean-deep); color: rgba(255,255,255,0.6); padding: 20px 28px; font-size: 0.72rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+  .footer span { color: var(--gold); }
+  @media (max-width: 600px) {
+    .header { padding: 26px 18px 24px; }
+    .header h1 { font-size: 1.8rem; }
+    .wrap { padding: 0 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="eyebrow">Silver Strand · Hollywood by the Sea · Oxnard 93035</div>
+  <h1>Strand Scenario <span>Board</span></h1>
+  <p class="lede">Every for-sale home in the farm, run through investor math: what it costs to own, what it has to earn, and how ten different ways to buy it change the picture.</p>
+  <nav>
+    <a href="index.html">Tracker</a>
+    <a href="market-intelligence.html">Market Intelligence</a>
+    <a href="#owners">For owners</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section id="board">
+    <h2><small>The farm board</small>What each home has to earn</h2>
+    <p class="sub">Each home is priced on a standard short-term-rental DSCR loan. "STR revenue needed" is the gross yearly booking revenue it takes for the rent to cover the payment at a 1.0 DSCR (lenders typically count about 80% of projected STR revenue). Change the loan below and every card updates. Tap a home to run all the scenarios.</p>
+
+    <div class="controls">
+      <div class="ctl"><label for="b-down">Down payment %</label><input type="number" id="b-down" value="25" step="5" min="0" max="100"></div>
+      <div class="ctl"><label for="b-rate">Rate %</label><input type="number" id="b-rate" value="8.875" step="0.125" min="0"></div>
+      <div class="ctl check"><input type="checkbox" id="b-io" checked><label for="b-io">Interest-only</label></div>
+      <div class="ctl"><label for="b-tax">Property tax %</label><input type="number" id="b-tax" value="1.19" step="0.01" min="0"></div>
+      <div class="ctl"><label for="b-ins">Insurance % of price</label><input type="number" id="b-ins" value="0.22" step="0.01" min="0"></div>
+    </div>
+
+    <p class="note" style="margin-top:10px">Illustrative DSCR terms courtesy of <strong>Derek Contreras</strong>, Mortgage Originator, NMLS #1919898 · Smart Home Mortgage / Real Estate Source Inc., NMLS #288738. Rates as of Nov 12, 2026. Not a quote or commitment to lend; terms change.</p>
+
+    <div class="sortbar" id="sortbar">
+      <button class="chip on" data-s="need">Lowest revenue needed</button>
+      <button class="chip" data-s="price">Lowest price</button>
+      <button class="chip" data-s="beds">Most bedrooms</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div id="detail"></div>
+  </section>
+
+  <section id="owners">
+    <h2><small>For owners</small>What is your equity doing?</h2>
+    <p class="sub">A generic example: a coastal home bought over a decade ago, with a low Prop 13 tax bill and a small mortgage. Change the numbers to match yours and compare four paths.</p>
+    <div class="controls" id="owner-inputs">
+      <div class="ctl"><label for="o-value">Home value</label><input type="number" id="o-value" value="1750000" step="25000"></div>
+      <div class="ctl"><label for="o-bal">Loan balance</label><input type="number" id="o-bal" value="400000" step="10000"></div>
+      <div class="ctl"><label for="o-pi">Mortgage P&amp;I /mo</label><input type="number" id="o-pi" value="2350" step="50"></div>
+      <div class="ctl"><label for="o-tax">Property tax /yr</label><input type="number" id="o-tax" value="8800" step="100"></div>
+      <div class="ctl"><label for="o-ins">Insurance /yr</label><input type="number" id="o-ins" value="3500" step="100"></div>
+      <div class="ctl"><label for="o-str">STR revenue /yr</label><input type="number" id="o-str" value="115000" step="1000"></div>
+      <div class="ctl"><label for="o-ltr">Long-term rent /mo</label><input type="number" id="o-ltr" value="6500" step="100"></div>
+      <div class="ctl"><label for="o-sell">Selling costs %</label><input type="number" id="o-sell" value="6" step="0.5"></div>
+      <div class="ctl"><label for="o-yield">Yield on cash %</label><input type="number" id="o-yield" value="4.5" step="0.25"></div>
+    </div>
+    <div class="owner-grid" id="owner-out"></div>
+    <p class="note">Rental paths are after management, vacancy or cleaning, and reserves. "Sell" is interest on net proceeds before taxes; selling may trigger capital gains (many married owners can exclude up to $500K on a primary home). Talk to a CPA before deciding.</p>
+  </section>
+
+  <section>
+    <div class="cta-box">
+      <h2>Want the projected revenue for any of these?</h2>
+      <p>I keep full short-term-rental projections, comps, insurance and repair notes for every home on this board. Tell me which ones you're curious about and I'll walk you through the real numbers. No pressure, just data.</p>
+      <div class="btns">
+        <a href="sms:+18054552107">Text (805) 455-2107</a>
+        <a class="ghost" href="mailto:noelle6418@gmail.com?subject=Strand%20Scenario%20Board">Email me</a>
+        <a class="ghost" href="https://noelleharrelson.com" target="_blank">noelleharrelson.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="fine">Estimates only, for education. Not a loan offer, commitment to lend, appraisal or tax advice. Prices and specs are from public MLS listing data as of the date in the tracker. Short-term-rental DSCR rates are illustrative terms courtesy of Derek Contreras (NMLS #1919898; Real Estate Source Inc., NMLS #288738) as of Nov 12, 2026; other rates are illustrative national averages or assumptions as of November 2026. Rates change daily and depend on the borrower. Insurance is estimated as a percent of price, HOA and repairs are not included, and seller-carry, buydown and rent figures are assumptions you can change. Short-term rentals in unincorporated Ventura County require County permits; confirm eligibility before buying. FHA and VA loans require the buyer to live in the home. Verify everything with your lender, insurance agent and CPA.</p>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div>Noelle Harrelson · REALTOR® · <span>NextHome Preferred Properties</span></div>
+  <div>DRE #02239099 · Broker Steve Decker DRE #01280302 · Each office independently owned &amp; operated</div>
+</footer>
+
+<script src="pipeline-data.js"></script>
+<script>
+(function () {
+  // ---- assumptions (match the private Scenario Engine) ----
+  const A = {
+    strQual: 0.80, strMgmt: 0.20, strOther: 0.10, reserves: 0.05,
+    ltrVac: 0.05, ltrMgmt: 0.08, mtrVac: 0.15, mtrMgmt: 0.15, mtrUtil: 350,
+    closing: 0.02, orig: 0.02, carryRate: 0.05, pmi: 0.005,
+    fhaUp: 0.0175, fhaAnnual: 0.0075, vaFee: 0.0215, fhaLimit: 1035000
+  };
+  const SCEN = [
+    { g: 'Short-term rental · DSCR', n: '25% down · 30-yr fixed', type: 'STR', down: 25, rate: 8.625, io: false },
+    { g: 'Short-term rental · DSCR', n: '25% down · interest-only', type: 'STR', down: 25, rate: 8.875, io: true },
+    { g: 'Short-term rental · DSCR', n: '20% down · 30-yr fixed', type: 'STR', down: 20, rate: 9.0, io: false },
+    { g: 'Short-term rental · DSCR', n: '20% down · interest-only', type: 'STR', down: 20, rate: 9.375, io: true },
+    { g: 'Short-term rental · DSCR', n: '25% down · 2-point rate buydown', type: 'STR', down: 25, rate: 8.125, io: false, pts: 2 },
+    { g: 'Short-term rental · DSCR', n: 'Seller carries 15% · bank 60%', type: 'STR', down: 25, rate: 8.625, io: false, carry: 15 },
+    { g: 'Long & mid-term rental', n: 'Long-term · 25% down · fixed', type: 'LTR', down: 25, rate: 7.125, io: false },
+    { g: 'Long & mid-term rental', n: 'Long-term · seller carries 15%', type: 'LTR', down: 25, rate: 7.125, io: false, carry: 15 },
+    { g: 'Long & mid-term rental', n: 'Mid-term (furnished) · 25% down', type: 'MTR', down: 25, rate: 7.125, io: false },
+    { g: 'Live there · house hack', n: 'Conventional · 10% down', type: 'HH', loan: 'CONV', down: 10, rate: 6.875, io: false },
+    { g: 'Live there · house hack', n: 'FHA · 3.5% down', type: 'HH', loan: 'FHA', down: 3.5, rate: 6.5, io: false },
+    { g: 'Live there · house hack', n: 'VA · 0% down', type: 'HH', loan: 'VA', down: 0, rate: 6.5, io: false }
+  ];
+
+  const $ = id => document.getElementById(id);
+  const num = id => parseFloat($(id).value) || 0;
+  const money = v => (v < 0 ? '−$' : '$') + Math.round(Math.abs(v)).toLocaleString('en-US');
+  const pct = v => (v * 100).toFixed(1) + '%';
+  const factor = (rate, io) => { const r = rate / 100 / 12; if (io) return r; return r === 0 ? 1 / 360 : r / (1 - Math.pow(1 + r, -360)); };
+
+  // ---- listings from the tracker's public data ----
+  const KEEP = ['active', 'watch', 'auc', 'underwritten'];
+  const LABEL = { active: 'Active', watch: 'Watch', auc: 'Under contract', underwritten: 'Active' };
+  const homes = (window.NH_PIPELINE || [])
+    .filter(p => p.category === 'farm' && KEEP.includes(p.status))
+    .map(p => {
+      const price = parseInt(String(p.price).replace(/[^0-9]/g, ''), 10);
+      const beds = (p.specs.match(/(\d+)\s*bd/) || [])[1];
+      const baths = (p.specs.match(/([\d.]+)\s*ba/) || [])[1];
+      const sq = (p.specs.match(/([\d,]+)\s*sqft(?!\s*lot)/) || [])[1];
+      return {
+        addr: p.address.replace(/,\s*Oxnard CA 93035/, ''), price, status: p.status,
+        beds: beds ? +beds : null, baths: baths || null, sqft: sq ? +sq.replace(/,/g, '') : null,
+        oceanfront: /oceanfront/i.test(p.specs) || /Ocean Dr/i.test(p.address)
+      };
+    })
+    .filter(h => h.price > 0);
+
+  let sortKey = 'need', selected = null;
+
+  function boardLoan() {
+    return { down: num('b-down') / 100, rate: num('b-rate'), io: $('b-io').checked, tax: num('b-tax') / 100, ins: num('b-ins') / 100 };
+  }
+  function boardCalc(h, L) {
+    const loan = h.price * (1 - L.down);
+    const piti = loan * factor(L.rate, L.io) + h.price * L.tax / 12 + h.price * L.ins / 12;
+    return { piti, strNeed: piti * 12 / A.strQual, ltrNeed: piti, cash: h.price * L.down + h.price * A.closing + loan * A.orig };
+  }
+
+  function renderBoard() {
+    const L = boardLoan();
+    const rows = homes.map(h => ({ h, c: boardCalc(h, L) }));
+    rows.sort((a, b) => sortKey === 'price' ? a.h.price - b.h.price : sortKey === 'beds' ? (b.h.beds || 0) - (a.h.beds || 0) || a.c.strNeed - b.c.strNeed : a.c.strNeed - b.c.strNeed);
+    $('grid').innerHTML = rows.map(({ h, c }) => `
+      <div class="card ${selected === h.addr ? 'sel' : ''}" data-a="${h.addr}" role="button" tabindex="0">
+        <div class="addr">${h.addr}<span class="badge ${h.status}">${LABEL[h.status]}</span></div>
+        <div class="meta">${[h.beds ? h.beds + ' bd' : '', h.baths ? h.baths + ' ba' : '', h.sqft ? h.sqft.toLocaleString() + ' sq ft' : ''].filter(Boolean).join(' · ')}</div>
+        <div class="stats">
+          <div class="stat"><div class="k">List price</div><div class="v">${money(h.price)}</div></div>
+          <div class="stat"><div class="k">Payment /mo</div><div class="v">${money(c.piti)}</div></div>
+          <div class="stat"><div class="k">STR revenue needed /yr</div><div class="v hl">${money(c.strNeed)}</div></div>
+          <div class="stat"><div class="k">LTR rent needed /mo</div><div class="v">${money(c.ltrNeed)}</div></div>
+          <div class="stat"><div class="k">Cash to close</div><div class="v">${money(c.cash)}</div></div>
+        </div>
+        <div class="cta">Run every scenario →</div>
+      </div>`).join('');
+    $('grid').querySelectorAll('.card').forEach(el => {
+      const open = () => { selected = el.dataset.a; renderBoard(); renderDetail(true); };
+      el.addEventListener('click', open);
+      el.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+    });
+  }
+
+  // ---- full scenario detail for one home ----
+  const detailState = {};
+  function renderDetail(scroll) {
+    const h = homes.find(x => x.addr === selected);
+    if (!h) { $('detail').innerHTML = ''; return; }
+    const st = detailState[h.addr] || (detailState[h.addr] = { str: '', ltr: '', mtr: '', offset: 1500, rates: SCEN.map(s => s.rate) });
+    $('detail').innerHTML = `
+      <div class="panel" id="panel">
+        <h3>${h.addr}</h3>
+        <div class="meta" style="color:var(--mist);font-size:.82rem">${money(h.price)} list · ${[h.beds ? h.beds + ' bd' : '', h.baths ? h.baths + ' ba' : ''].filter(Boolean).join(' · ')}</div>
+        <div class="inputs">
+          <div class="ctl"><label for="d-str">Your STR revenue estimate /yr</label><input type="number" id="d-str" placeholder="e.g. 90000" value="${st.str}"></div>
+          <div class="ctl"><label for="d-ltr">Long-term rent /mo</label><input type="number" id="d-ltr" placeholder="e.g. 5500" value="${st.ltr}"></div>
+          <div class="ctl"><label for="d-mtr">Mid-term rent /mo</label><input type="number" id="d-mtr" placeholder="e.g. 7000" value="${st.mtr}"></div>
+          <div class="ctl"><label for="d-off">House hack: rent from a room or unit /mo</label><input type="number" id="d-off" value="${st.offset}"></div>
+        </div>
+        <p class="note">Leave revenue blank to see what each loan needs. Add an estimate to see DSCR, cash flow and the price that works. Rates are editable in the table.</p>
+        <div class="tablewrap"><table id="d-table"></table></div>
+      </div>`;
+    ['d-str', 'd-ltr', 'd-mtr', 'd-off'].forEach(id => $(id).addEventListener('input', () => {
+      st.str = $('d-str').value; st.ltr = $('d-ltr').value; st.mtr = $('d-mtr').value; st.offset = parseFloat($('d-off').value) || 0; renderTable(h, st);
+    }));
+    renderTable(h, st);
+    if (scroll) $('panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function renderTable(h, st) {
+    const L = boardLoan(), P = h.price, insM = P * L.ins / 12, taxM = P * L.tax / 12;
+    const strG = parseFloat(st.str) || 0, ltr = parseFloat(st.ltr) || 0, mtr = parseFloat(st.mtr) || 0;
+    let html = `<tr><th>Scenario</th><th>Rate %</th><th>Payment /mo</th><th>Cash to close</th><th>Revenue needed</th><th>DSCR</th><th>Cash flow /mo</th><th>Price for 1.0</th></tr>`;
+    let lastG = '';
+    SCEN.forEach((s, i) => {
+      if (s.g !== lastG) { html += `<tr class="group"><td colspan="8">${s.g}</td></tr>`; lastG = s.g; }
+      const rate = st.rates[i], f = factor(rate, s.io), d = s.down / 100, c = (s.carry || 0) / 100;
+      let base = P * (1 - d - c), loan = base, mi = 0, flag = '';
+      if (s.type === 'HH' && s.loan === 'FHA') { loan = base * (1 + A.fhaUp); mi = base * A.fhaAnnual / 12; if (base > A.fhaLimit) flag = 'Over FHA limit'; }
+      if (s.type === 'HH' && s.loan === 'VA') { loan = base * (1 + A.vaFee); }
+      if (s.type === 'HH' && s.loan === 'CONV') { mi = base * A.pmi / 12; }
+      const piti = loan * f + P * c * A.carryRate / 12 + taxM + insM + mi;
+      const cash = P * d + P * A.closing + (s.type === 'HH' ? 0 : base * (A.orig + (s.pts || 0) / 100));
+      let need = '', dscr = '—', flow = '—', be = '—';
+      if (s.type === 'STR') {
+        need = money(piti * 12 / A.strQual) + '<span class="tag">STR /yr</span>';
+        if (strG) {
+          const q = strG * A.strQual / 12, noi = strG / 12 * (1 - A.strMgmt - A.strOther - A.reserves);
+          dscr = (q / piti).toFixed(2); flow = cls(noi - piti);
+          be = money(q / ((1 - d - c) * f + c * A.carryRate / 12 + L.tax / 12 + L.ins / 12));
+        }
+      } else if (s.type === 'LTR' || s.type === 'MTR') {
+        need = money(piti) + '<span class="tag">LTR rent /mo</span>';
+        if (ltr) {
+          dscr = (ltr / piti).toFixed(2);
+          be = money(ltr / ((1 - d - c) * f + c * A.carryRate / 12 + L.tax / 12 + L.ins / 12));
+          if (s.type === 'LTR') flow = cls(ltr * (1 - A.ltrVac - A.ltrMgmt - A.reserves) - piti);
+        }
+        if (s.type === 'MTR' && mtr) flow = cls(mtr * (1 - A.mtrVac - A.mtrMgmt - A.reserves) - A.mtrUtil - piti);
+      } else {
+        need = flag ? `<span class="neg">${flag}</span>` : '<span class="tag">qualifies on your income</span>';
+        flow = cls(st.offset - piti) + '<span class="tag">your net housing cost</span>';
+        dscr = 'n/a';
+      }
+      html += `<tr><td>${s.n}</td><td><input type="number" step="0.125" value="${rate}" data-i="${i}"></td><td>${money(piti)}</td><td>${money(cash)}</td><td>${need}</td><td>${dscr}</td><td>${flow}</td><td>${be}</td></tr>`;
+    });
+    $('d-table').innerHTML = html;
+    $('d-table').querySelectorAll('input[data-i]').forEach(inp => inp.addEventListener('change', () => {
+      st.rates[+inp.dataset.i] = parseFloat(inp.value) || 0; renderTable(h, st);
+    }));
+  }
+  const cls = v => `<span class="${v >= 0 ? 'pos' : 'neg'}">${money(v)}</span>`;
+
+  // ---- owner example ----
+  function renderOwner() {
+    const v = num('o-value'), bal = num('o-bal'), carry = num('o-pi') + num('o-tax') / 12 + num('o-ins') / 12;
+    const equity = v - bal, proceeds = v * (1 - num('o-sell') / 100) - bal;
+    const ltr = num('o-ltr') * (1 - A.ltrVac - A.ltrMgmt - A.reserves) - carry;
+    const str = num('o-str') / 12 * (1 - A.strMgmt - A.strOther - A.reserves) - carry;
+    const sell = proceeds * num('o-yield') / 100 / 12;
+    const card = (name, m, note) => `<div class="path"><div class="name">${name}</div><div class="big ${m >= 0 ? 'pos' : 'neg'}">${money(m)}<span style="font-size:1rem">/mo</span></div><div class="small">${note}</div></div>`;
+    $('owner-out').innerHTML =
+      card('Keep living there', -carry, 'Your monthly housing cost') +
+      card('Rent it long-term', ltr, pct(ltr * 12 / equity) + ' return on ' + money(equity) + ' equity') +
+      card('Rent it short-term', str, pct(str * 12 / equity) + ' return on equity') +
+      card('Sell and park the cash', sell, pct(sell * 12 / equity) + ' on equity · ' + money(proceeds) + ' net proceeds');
+  }
+
+  // ---- wire up ----
+  ['b-down', 'b-rate', 'b-io', 'b-tax', 'b-ins'].forEach(id => $(id).addEventListener('input', () => { renderBoard(); if (selected) renderTable(homes.find(x => x.addr === selected), detailState[selected]); }));
+  $('sortbar').querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => {
+    sortKey = b.dataset.s; $('sortbar').querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === b)); renderBoard();
+  }));
+  $('owner-inputs').querySelectorAll('input').forEach(i => i.addEventListener('input', renderOwner));
+  renderBoard(); renderOwner();
+})();
+</script>
+</body>
+</html>
