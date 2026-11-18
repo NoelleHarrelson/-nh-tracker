@@ -1,9 +1,9 @@
 /* ═══════════════════════════════════════════════════════════
    NH PIPELINE DATA · single source for index.html + market-intelligence.html
-   Last updated: Nov 15, 2026
+   Last updated: Nov 18, 2026
    To update: edit this file only, then bump DATA_VERSION by 1.
    ═══════════════════════════════════════════════════════════ */
-window.NH_DATA_VERSION = 10;
+window.NH_DATA_VERSION = 11;
 window.NH_PIPELINE = [
 
       /* ═══════════════════ FARM — SFR / STR PLAYS ═══════════════════ */
@@ -150,7 +150,7 @@ window.NH_PIPELINE = [
         rabbu: '$69,606/yr',
         yield: '—',
         str: '$244 ADR · 65% occ (Medium comp strength)',
-        notes: '11/3/26: still Active, cut again to $1,239,000 (from $1,325,000; originally $1,399,000). Re-run DealCheck at new price. REFRESHED 7/31: price cut from $1,399,000 to $1,325,000 — worth revisiting the pencil at new price. Previously: RPR RVM $1,394,230 (5-star conf) trending down -7.44% YoY. Prior DealCheck at old price: cash needed $321,770 · cash flow -$4,371/mo · cap rate 2% · CoC -16.3%. Re-run DealCheck at new price before resurfacing.'
+        notes: 'WATCH (11/18/26): does not pencil as a DSCR deal at $1,239,000. Revisit only after a meaningful price drop. 11/3/26: still Active, cut again to $1,239,000 (from $1,325,000; originally $1,399,000). Re-run DealCheck at new price. REFRESHED 7/31: price cut from $1,399,000 to $1,325,000 — worth revisiting the pencil at new price. Previously: RPR RVM $1,394,230 (5-star conf) trending down -7.44% YoY. Prior DealCheck at old price: cash needed $321,770 · cash flow -$4,371/mo · cap rate 2% · CoC -16.3%. Re-run DealCheck at new price before resurfacing.'
       },
       {
         address: '360 Melrose Dr, Oxnard CA 93035',
