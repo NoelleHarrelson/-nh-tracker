@@ -3,7 +3,7 @@
    Last updated: Nov 18, 2026
    To update: edit this file only, then bump DATA_VERSION by 1.
    ═══════════════════════════════════════════════════════════ */
-window.NH_DATA_VERSION = 11;
+window.NH_DATA_VERSION = 12;
 window.NH_PIPELINE = [
 
       /* ═══════════════════ FARM — SFR / STR PLAYS ═══════════════════ */
@@ -26,7 +26,7 @@ window.NH_PIPELINE = [
         price: '$1,495,000',
         specs: '3bd / 2ba · 1,055 sqft · 2,448 sqft lot · Single-story · Silver Strand',
         ppsf: '$1,417',
-        status: 'active',
+        status: 'watch',
         category: 'farm',
         airdna: '',
         rabbu: '',
@@ -39,7 +39,7 @@ window.NH_PIPELINE = [
         price: '$1,349,000',
         specs: '3bd / 2ba · 2,036 sqft · 2,178 sqft lot · Built 1975 · 2-car garage · Hollywood by the Sea',
         ppsf: '$663',
-        status: 'active',
+        status: 'watch',
         category: 'farm',
         airdna: '',
         rabbu: '',
@@ -65,7 +65,7 @@ window.NH_PIPELINE = [
         price: '$1,290,000',
         specs: '4bd / 3ba · 2,068 sqft · Built 1979 · 2-car garage · Silver Strand',
         ppsf: '$624',
-        status: 'active',
+        status: 'watch',
         category: 'farm',
         airdna: '',
         rabbu: '',
@@ -144,7 +144,7 @@ window.NH_PIPELINE = [
         price: '$1,239,000',
         specs: '3bd / 3ba · Hollywood by the Sea · No HOA',
         ppsf: '$512',
-        status: 'active',
+        status: 'watch',
         category: 'farm',
         airdna: '$58,300/yr',
         rabbu: '$69,606/yr',

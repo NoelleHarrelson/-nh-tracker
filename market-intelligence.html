@@ -1166,6 +1166,7 @@ body {
     if (f === 'yield') return data.filter(p => p.category === 'yield');
     const farm = data.filter(p => p.category !== 'yield');
     if (f === 'all') return farm;
+    if (f === 'active') return farm.filter(p => ['active','watch','auc'].includes(p.status));
     return farm.filter(p => p.status === f || (f === 'watch' && p.status === 'auc'));
   }
   function render(f) {
